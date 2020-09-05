@@ -1,6 +1,6 @@
 # Rating Information / Quote Overview
 
-Live link to project: https://mikebars.github.io/rating-information-quote-overview
+Live link to project: https://mikebars.github.io/rating-information-quote-overview/
 
 ## How to use:
 
