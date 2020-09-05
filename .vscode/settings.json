@@ -1,0 +1,91 @@
+{
+  /**
+   * `VS Code`
+   */
+  /* `editor` */
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "boundary",
+  "editor.tabSize": 2,
+  /* `explorer` */
+  "explorer.enableDragAndDrop": false,
+  "explorer.openEditors.visible": 0,
+  /* `extensions` */
+  "extensions.ignoreRecommendations": true,
+  "extensions.showRecommendationsOnlyOnDemand": true,
+  /* `files` */
+  "files.eol": "\n",
+  /* `javascript` */
+  "javascript.format.enable": true,
+  "javascript.implicitProjectConfig.checkJs": true,
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.preferences.quoteStyle": "single",
+  "javascript.validate.enable": true,
+  /* `npm` */
+  "npm.enableRunFromFolder": true,
+  "npm.enableScriptExplorer": true,
+  "npm.fetchOnlinePackageInfo": false,
+  "npm.packageManager": "yarn",
+  /* `terminal` */
+  "terminal.integrated.scrollback": 100000,
+  "terminal.integrated.shell.linux": "/bin/zsh",
+  /* `typescript` */
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "typescript.format.semicolons": "remove",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.tsserver.log": "verbose",
+  "typescript.tsserver.trace": "verbose",
+  "typescript.validate.enable": true,
+  /* `workbench` */
+  "workbench.colorTheme": "Quiet Light",
+  "workbench.editor.closeOnFileDelete": true,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.enableExperiments": false,
+  "workbench.settings.enableNaturalLanguageSearch": false,
+  "workbench.settings.openDefaultSettings": true,
+  "workbench.settings.openDefaultKeybindings": true,
+  /**
+   * `Extensions`
+   */
+  /* `eslint` */
+  "eslint.alwaysShowStatus": true,
+  "eslint.enable": true,
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "eslint.packageManager": "yarn",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  /* `jest` */
+  "jest.debugMode": true,
+  "jest.pathToConfig": "jest.config.js",
+  "jest.pathToJest": "node_modules/.bin/jest",
+  "jest.rootPath": ".",
+  /* `prettier` */
+  "prettier.configPath": ".prettierrc.js",
+  "prettier.endOfLine": "lf",
+  "prettier.ignorePath": ".prettierignore",
+  "prettier.packageManager": "yarn",
+  "prettier.prettierPath": "node_modules/prettier",
+  "prettier.requireConfig": true,
+  "prettier.useEditorConfig": true,
+  /* `stylelint` */
+  "stylelint.configBasedir": ".",
+  "stylelint.enable": true,
+  "stylelint.packageManager": "yarn",
+  "stylelint.reportInvalidScopeDisables": true,
+  "stylelint.reportNeedlessDisables": true,
+  "stylelint.stylelintPath": "node_modules/stylelint",
+  /* `tslint` */
+  "tslint.configFile": "tslint.json",
+  "tslint.jsEnable": true,
+  "tslint.packageManager": "yarn"
+}

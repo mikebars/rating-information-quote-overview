@@ -1,0 +1,64 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:all",
+    "tslint:latest",
+    "tslint:recommended",
+    "tslint-microsoft-contrib/latest",
+    "tslint-microsoft-contrib/recommended",
+    "tslint-react",
+    "tslint-sonarts",
+    "tslint-plugin-prettier",
+    "tslint-config-prettier"
+  ],
+  "jsRules": true,
+  "rules": {
+    "array-type": [true, "generic"],
+    "arrow-return-shorthand": true,
+    "completed-docs": false,
+    "export-name": false,
+    "file-name-casing": [false, { "*": "camel-case" }],
+    "import-name": false,
+    "interface-name": false,
+    "interface-over-type-literal": false,
+    "jsx-no-lambda": false,
+    "max-func-body-length": false,
+    "no-big-function": false,
+    "no-implicit-dependencies": [true, ["src"]],
+    "no-import-side-effect": [
+      true,
+      {
+        "ignore-module": "\\.css$"
+      }
+    ],
+    "no-single-line-block-comment": false,
+    "no-submodule-imports": false,
+    "ordered-imports": [
+      true,
+      {
+        "grouped-imports": true,
+        "groups": [
+          { "name": "src directories", "match": "^src", "order": 20 },
+          { "name": "libraries", "match": ".*", "order": 10 }
+        ]
+      }
+    ],
+    "prefer-array-literal": [true, { "allow-type-parameters": true }],
+    "prefer-type-cast": false,
+    "prettier": true,
+    "react-this-binding-issue": false,
+    "typedef": [
+      true,
+      "array-destructuring",
+      "arrow-call-signature",
+      "arrow-parameter",
+      "call-signature",
+      "member-variable-declaration",
+      "object-destructuring",
+      "parameter",
+      "property-declaration",
+      "variable-declaration"
+    ]
+  },
+  "rulesDirectory": ["tslint-microsoft-contrib", "tslint-plugin-prettier"]
+}

@@ -1,0 +1,83 @@
+{
+  /** `VS Code` */
+
+  "name": "devcontainer",
+
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "editorconfig.editorconfig",
+    "jpoissonnier.vscode-styled-components",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "orta.vscode-jest",
+    "stylelint.vscode-stylelint"
+  ],
+
+  "forwardPorts": [3000],
+
+  // "initializeCommand": "",
+
+  // "postAttachCommand": "",
+
+  "postCreateCommand": "yarn install",
+
+  // "postStartCommand": "",
+
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/zsh"
+  },
+
+  /** `Docker` */
+
+  // "appPort": 0,
+
+  "build": {
+    "args": {
+      "NODE_VERSION": "14.8.0",
+      "OH_MY_ZSH_PLUGINS": "( git node npm npx yarn )",
+      "OH_MY_ZSH_THEME": "geoffgarside",
+      "USER": "node",
+      "VARIANT": "stretch",
+      "YARN_VERSION": "1.22.4"
+    },
+    // "context": ".",
+    "dockerfile": "Dockerfile"
+    // "target": ""
+  },
+
+  // "devPort": 0,
+
+  // "image": "node",
+
+  "containerEnv": {
+    "CONTAINER_WORKSPACE_FOLDER": "${containerWorkspaceFolder}",
+    "CONTAINER_WORKSPACE_FOLDER_BASENAME": "${containerWorkspaceFolderBasename}",
+    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
+    "LOCAL_WORKSPACE_FOLDER_BASENAME": "${localWorkspaceFolderBasename}"
+  },
+
+  // "containerUser": "root",
+
+  // "mounts": [],
+
+  // "overrideCommand": true,
+
+  "remoteEnv": {
+    "CONTAINER_WORKSPACE_FOLDER": "${containerWorkspaceFolder}",
+    "CONTAINER_WORKSPACE_FOLDER_BASENAME": "${containerWorkspaceFolderBasename}",
+    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
+    "LOCAL_WORKSPACE_FOLDER_BASENAME": "${localWorkspaceFolderBasename}"
+  },
+
+  "remoteUser": "node"
+
+  // "runArgs": [],
+
+  // "shutdownAction": "stopContainer",
+
+  // "updateRemoteUserUID": true,
+
+  // "workspaceFolder": "${localWorkspaceFolder}",
+
+  // "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+}
