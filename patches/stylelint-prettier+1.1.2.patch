@@ -1,0 +1,12 @@
+diff --git a/node_modules/stylelint-prettier/stylelint-prettier.js b/node_modules/stylelint-prettier/stylelint-prettier.js
+index 9a78dcb..d1070fa 100644
+--- a/node_modules/stylelint-prettier/stylelint-prettier.js
++++ b/node_modules/stylelint-prettier/stylelint-prettier.js
+@@ -94,6 +94,7 @@ module.exports = stylelint.createPlugin(
+         'vue',
+         'markdown',
+         'html',
++        null,
+       ];
+       if (parserBlockList.indexOf(prettierFileInfo.inferredParser) !== -1) {
+         return;

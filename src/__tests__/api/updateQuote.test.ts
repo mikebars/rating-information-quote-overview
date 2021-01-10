@@ -8,13 +8,13 @@ import {
   UpdateQuoteResponse,
   updateQuoteResponseToQuote,
 } from 'src/api/updateQuote'
-import { Quote } from 'src/screens/QuoteOverview/QuoteOverviewForm'
+import type { Quote } from 'src/screens/QuoteOverview/QuoteOverviewForm'
 
 // #region /** JEST_EXHAUSTIVE setup */
 
+/* eslint-disable-next-line prefer-destructuring */
 const JEST_EXHAUSTIVE: string | undefined = process.env.JEST_EXHAUSTIVE
 
-/* tslint:disable-next-line:no-magic-numbers */
 const JEST_EXHAUSTIVE_TEST_TIMEOUT: number = 60 * 60 * 1000
 
 fc.configureGlobal({
@@ -49,13 +49,19 @@ const quoteArbitrary: QuoteArbitrary = (): fc.Arbitrary<Quote> =>
         default: fc.integer(),
         description: fc.string(),
         title: fc.string(),
-        values: fc.set(fc.integer()),
+        values: fc.set(fc.integer(), {
+          maxLength: 10,
+          minLength: 2,
+        }) as fc.Arbitrary<Array<number> & { 0: number; 1: number }>,
       }),
       deductible: fc.record({
         default: fc.integer(),
         description: fc.string(),
         title: fc.string(),
-        values: fc.set(fc.integer()),
+        values: fc.set(fc.integer(), {
+          maxLength: 10,
+          minLength: 2,
+        }) as fc.Arbitrary<Array<number> & { 0: number; 1: number }>,
       }),
     }),
     variableSelections: fc.record({
@@ -66,9 +72,7 @@ const quoteArbitrary: QuoteArbitrary = (): fc.Arbitrary<Quote> =>
 
 type UpdateQuoteResponseArbitrary = () => fc.Arbitrary<UpdateQuoteResponse>
 
-const updateQuoteResponseArbitrary: UpdateQuoteResponseArbitrary = (): fc.Arbitrary<
-  UpdateQuoteResponse
-> =>
+const updateQuoteResponseArbitrary: UpdateQuoteResponseArbitrary = (): fc.Arbitrary<UpdateQuoteResponse> =>
   fc.record({
     quote: fc.record({
       policy_holder: fc.record({
@@ -80,7 +84,7 @@ const updateQuoteResponseArbitrary: UpdateQuoteResponseArbitrary = (): fc.Arbitr
       rating_address: fc.record({
         city: fc.string(),
         line_1: fc.string(),
-        line_2: fc.oneof(fc.string(), fc.constant(null)), // tslint:disable-line:no-null-keyword
+        line_2: fc.oneof(fc.string(), fc.constant(null)),
         postal: fc.string(),
         region: fc.string(),
       }),
@@ -107,6 +111,7 @@ const updateQuoteResponseArbitrary: UpdateQuoteResponseArbitrary = (): fc.Arbitr
 
 // #endregion /** fast-check arbitraries */
 
+/* eslint-disable-next-line sonarjs/cognitive-complexity */
 describe('updateQuote', (): void => {
   it(
     'updateQuote - mockUpdateQuote test',
@@ -175,13 +180,13 @@ describe('updateQuote', (): void => {
             updateQuoteRequest.quote.policy_holder.first_name ===
             quote.policyHolder.firstName
 
-          expect(firstNameMatches).toBe(true)
+          expect(firstNameMatches).toBeTrue()
 
           const lastNameMatches: boolean =
             updateQuoteRequest.quote.policy_holder.last_name ===
             quote.policyHolder.lastName
 
-          expect(lastNameMatches).toBe(true)
+          expect(lastNameMatches).toBeTrue()
 
           const addressMatches: boolean =
             updateQuoteRequest.quote.rating_address.city ===
@@ -197,7 +202,7 @@ describe('updateQuote', (): void => {
             updateQuoteRequest.quote.rating_address.region ===
               quote.ratingAddress.region
 
-          expect(addressMatches).toBe(true)
+          expect(addressMatches).toBeTrue()
 
           const allMatches: boolean = [
             firstNameMatches,
@@ -205,7 +210,7 @@ describe('updateQuote', (): void => {
             addressMatches,
           ].every((matches: boolean): boolean => matches)
 
-          expect(allMatches).toBe(true)
+          expect(allMatches).toBeTrue()
 
           return allMatches
         }),
@@ -232,17 +237,17 @@ describe('updateQuote', (): void => {
               quote.policyHolder.lastName ===
                 updateQuoteResponse.quote.policy_holder.last_name
 
-            expect(policyHolderMatches).toBe(true)
+            expect(policyHolderMatches).toBeTrue()
 
             const premiumMatches: boolean =
               quote.premium === updateQuoteResponse.quote.premium
 
-            expect(premiumMatches).toBe(true)
+            expect(premiumMatches).toBeTrue()
 
             const quoteIdMatches: boolean =
               quote.quoteId === updateQuoteResponse.quote.quoteId
 
-            expect(quoteIdMatches).toBe(true)
+            expect(quoteIdMatches).toBeTrue()
 
             const ratingAddressMatches: boolean =
               quote.ratingAddress.city ===
@@ -258,7 +263,7 @@ describe('updateQuote', (): void => {
               quote.ratingAddress.region ===
                 updateQuoteResponse.quote.rating_address.region
 
-            expect(ratingAddressMatches).toBe(true)
+            expect(ratingAddressMatches).toBeTrue()
 
             /* tslint:disable:strict-comparisons */
             const variableOptionsMatches: boolean =
@@ -285,7 +290,7 @@ describe('updateQuote', (): void => {
                 updateQuoteResponse.quote.variable_options.deductible.values
             /* tslint:enable:strict-comparisons */
 
-            expect(variableOptionsMatches).toBe(true)
+            expect(variableOptionsMatches).toBeTrue()
 
             const variableSelectionsMatches: boolean =
               quote.variableSelections.asteroidCollision ===
@@ -294,7 +299,7 @@ describe('updateQuote', (): void => {
               quote.variableSelections.deductible ===
                 updateQuoteResponse.quote.variable_selections.deductible
 
-            expect(variableSelectionsMatches).toBe(true)
+            expect(variableSelectionsMatches).toBeTrue()
 
             const allMatches: boolean = [
               policyHolderMatches,
@@ -305,7 +310,7 @@ describe('updateQuote', (): void => {
               variableSelectionsMatches,
             ].every((matches: boolean): boolean => matches)
 
-            expect(allMatches).toBe(true)
+            expect(allMatches).toBeTrue()
 
             return allMatches
           },

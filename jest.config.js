@@ -1,46 +1,89 @@
-/**
- * @typedef {import('@jest/types').Config.InitialOptions} JestConfig
- */
+/***************************************************************************/
+/* `rating-information-quote-overview`                                     */
+/* `Workspace`                                                             */
+/* `jest.config.js`                                                        */
+/***************************************************************************/
 
-/**
- * @type {Partial<JestConfig>}
- */
-const jestConfig = {
-  collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!src/**/*.d.ts'],
-  moduleFileExtensions: [
-    'js',
-    'json',
-    'jsx',
-    'node',
-    'ts',
-    'tsx',
-    'web.js',
-    'web.jsx',
-    'web.ts',
-    'web.tsx',
+/** @typedef {import('jest.config').JestGlobalConfiguration} JestGlobalConfiguration */
+/** @typedef {import('jest.config').JestProjectConfiguration} JestProjectConfiguration */
+/** @typedef {import('jest.config').JestProjectConfigurationIgnorePatterns} JestProjectConfigurationIgnorePatterns */
+
+/** @type {JestProjectConfiguration} */
+const jestESLintProjectConfig = {
+  cacheDirectory: '<rootDir>/.jestcache/eslint',
+  displayName: 'ESLint',
+  runner: 'jest-runner-eslint',
+  testMatch: [
+    '<rootDir>/**//.*.cjs',
+    '<rootDir>/**//.*.js',
+    '<rootDir>/**//.*.jsx',
+    '<rootDir>/**//.*.mjs',
+    '<rootDir>/**//.*.ts',
+    '<rootDir>/**//.*.tsx',
+    '<rootDir>/**/*.cjs',
+    '<rootDir>/**/*.js',
+    '<rootDir>/**/*.jsx',
+    '<rootDir>/**/*.mjs',
+    '<rootDir>/**/*.ts',
+    '<rootDir>/**/*.tsx',
   ],
+}
+
+/** @type {JestProjectConfiguration} */
+const jestTestProjectConfig = {
+  cacheDirectory: '<rootDir>/.jestcache/test',
+  displayName: 'Test',
   moduleNameMapper: {
-    '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
+    '\\.(css|sass|scss)$': 'identity-obj-proxy',
     '^react-native$': 'react-native-web',
   },
   modulePaths: ['<rootDir>'],
   roots: ['<rootDir>/src'],
   setupFiles: ['react-app-polyfill/jsdom', '<rootDir>/src/setupEnv.ts'],
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
-  testEnvironment: 'jest-environment-jsdom-fourteen',
-  testMatch: ['<rootDir>/src/**/__tests__/**/*.{spec,test}.{js,jsx,ts,tsx}'],
+  setupFilesAfterEnv: ['jest-extended', '<rootDir>/src/setupTests.ts'],
+  testEnvironment: 'jest-environment-jsdom-sixteen',
+  testMatch: [
+    '**/__tests__/**/*.test.cjs',
+    '**/__tests__/**/*.test.js',
+    '**/__tests__/**/*.test.jsx',
+    '**/__tests__/**/*.test.mjs',
+    '**/__tests__/**/*.test.ts',
+    '**/__tests__/**/*.test.tsx',
+  ],
   transform: {
-    '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)':
+    '^(?!.*\\.(cjs|css|js|json|jsx|mjs|sass|scss|ts|tsx)$)':
       '<rootDir>/node_modules/react-scripts/config/jest/fileTransform.js',
-    '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
-    '^.+\\.css$':
+    '^.+\\.(cjs|js|jsx|mjs|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
+    '^.+\\.(css|sass|scss)$':
       '<rootDir>/node_modules/react-scripts/config/jest/cssTransform.js',
   },
-  transformIgnorePatterns: [
-    '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',
-    '^.+\\.module\\.(css|sass|scss)$',
+}
+
+/** @type {JestProjectConfigurationIgnorePatterns} */
+const ignorePatterns = [
+  '<rootDir>/**/.next/**',
+  '<rootDir>/**/coverage/**',
+  '<rootDir>/**/node_modules/**',
+  '<rootDir>/**/out/**',
+  '<rootDir>/**/patches/**',
+  '<rootDir>/**/public/**',
+]
+
+/** @type {JestGlobalConfiguration} */
+const jestConfig = {
+  coveragePathIgnorePatterns: ignorePatterns,
+  modulePathIgnorePatterns: ignorePatterns,
+  projects: [
+    ...(process.env.JEST_WITH_ALL || process.env.JEST_WITH_ESLINT
+      ? [jestESLintProjectConfig]
+      : []),
+    jestTestProjectConfig,
   ],
+  testPathIgnorePatterns: ignorePatterns,
+  transformIgnorePatterns: ignorePatterns,
+  watchPathIgnorePatterns: ignorePatterns,
   watchPlugins: [
+    'jest-watch-select-projects',
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',
   ],

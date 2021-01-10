@@ -1,6 +1,6 @@
 import * as Polished from 'polished'
 import * as React from 'react'
-import { default as styled, StyledComponent } from 'styled-components/macro'
+import styled, { StyledComponent } from 'styled-components/macro'
 
 export type FormData = {
   address: {
@@ -25,7 +25,7 @@ type Props = {
 export const RatingInformationForm: React.FC<Props> = (
   props: Props,
 ): React.ReactElement => {
-  /** name */
+  /** `name` */
   const [firstName, setFirstName]: [
     FormData['name']['firstName'],
     React.Dispatch<React.SetStateAction<FormData['name']['firstName']>>,
@@ -36,7 +36,7 @@ export const RatingInformationForm: React.FC<Props> = (
     React.Dispatch<React.SetStateAction<FormData['name']['lastName']>>,
   ] = React.useState<FormData['name']['lastName']>('')
 
-  /** address */
+  /** `address` */
   const [line1, setLine1]: [
     FormData['address']['line1'],
     React.Dispatch<React.SetStateAction<FormData['address']['line1']>>,
@@ -117,6 +117,7 @@ export const RatingInformationForm: React.FC<Props> = (
           >
             {labelText.name.firstName}
           </Label>
+
           <InputText
             data-testid="rating-information-form-name-first-name-input"
             id="rating-information-form-name-first-name-input"
@@ -124,7 +125,7 @@ export const RatingInformationForm: React.FC<Props> = (
             onChange={(event: React.ChangeEvent<HTMLInputElement>): void => {
               setFirstName(event.target.value)
             }}
-            required={true}
+            required
             title="Your Legal First Name e.g. Jane"
             value={firstName}
           />
@@ -141,6 +142,7 @@ export const RatingInformationForm: React.FC<Props> = (
           >
             {labelText.name.lastName}
           </Label>
+
           <InputText
             data-testid="rating-information-form-name-last-name-input"
             id="rating-information-form-name-last-name-input"
@@ -148,7 +150,7 @@ export const RatingInformationForm: React.FC<Props> = (
             onChange={(event: React.ChangeEvent<HTMLInputElement>): void => {
               setLastName(event.target.value)
             }}
-            required={true}
+            required
             title="Your Legal Last Name e.g. Smith"
             value={lastName}
           />
@@ -188,6 +190,7 @@ export const RatingInformationForm: React.FC<Props> = (
           >
             {labelText.address.line1}
           </Label>
+
           <InputText
             data-testid="rating-information-form-address-line-1-input"
             id="rating-information-form-address-line-1-input"
@@ -195,7 +198,7 @@ export const RatingInformationForm: React.FC<Props> = (
             onChange={(event: React.ChangeEvent<HTMLInputElement>): void => {
               setLine1(event.target.value)
             }}
-            required={true}
+            required
             title="Address Line 1 e.g. 1313 Mockingbird Lane"
             value={line1}
           />
@@ -212,6 +215,7 @@ export const RatingInformationForm: React.FC<Props> = (
           >
             {labelText.address.line2}
           </Label>
+
           <InputText
             data-testid="rating-information-form-address-line-2-input"
             id="rating-information-form-address-line-2-input"
@@ -235,6 +239,7 @@ export const RatingInformationForm: React.FC<Props> = (
           >
             {labelText.address.city}
           </Label>
+
           <InputText
             data-testid="rating-information-form-address-city-input"
             id="rating-information-form-address-city-input"
@@ -242,7 +247,7 @@ export const RatingInformationForm: React.FC<Props> = (
             onChange={(event: React.ChangeEvent<HTMLInputElement>): void => {
               setCity(event.target.value)
             }}
-            required={true}
+            required
             title="U.S. City Name e.g. Los Angeles"
             value={city}
           />
@@ -259,16 +264,17 @@ export const RatingInformationForm: React.FC<Props> = (
           >
             {labelText.address.region}
           </Label>
+
           <InputText
             id="rating-information-form-address-region-input"
-            maxLength={2} // tslint:disable-line:no-magic-numbers
-            minLength={2} // tslint:disable-line:no-magic-numbers
+            maxLength={2}
+            minLength={2}
             name="rating-information-form-address-region-input"
             onChange={(event: React.ChangeEvent<HTMLInputElement>): void => {
               setRegion(event.target.value)
             }}
             pattern="[a-zA-Z]{2}"
-            required={true}
+            required
             title="2 Character U.S. State Abbreviation e.g. CA"
             value={region}
           />
@@ -285,16 +291,17 @@ export const RatingInformationForm: React.FC<Props> = (
           >
             {labelText.address.postal}
           </Label>
+
           <InputText
             id="rating-information-form-address-postal-input"
-            maxLength={5} // tslint:disable-line:no-magic-numbers
-            minLength={5} // tslint:disable-line:no-magic-numbers
+            maxLength={5}
+            minLength={5}
             name="rating-information-form-address-postal-input"
             onChange={(event: React.ChangeEvent<HTMLInputElement>): void => {
               setPostal(event.target.value)
             }}
             pattern="[0-9]{5}"
-            required={true}
+            required
             title="5 Digit ZIP Code e.g. 90210"
             value={postal}
           />
@@ -355,9 +362,9 @@ const Field: StyledComponent<'div', Record<string, unknown>> = styled.div`
 `
 
 const Form: StyledComponent<'form', Record<string, unknown>> = styled.form`
-  align-items: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
 `
 
@@ -374,13 +381,15 @@ const InputText: StyledComponent<
   outline: 1px solid;
 `
 
+/* eslint-disable capitalized-comments, no-inline-comments */
 /* tslint:disable:strict-string-expressions */
 const Label: StyledComponent<'label', Record<string, unknown>> = styled.label`
-  /* stylelint-disable value-keyword-case */
-  ${Polished.ellipsis()}
-  /* stylelint-enable value-keyword-case */
+  /* stylelint-disable csstree/validator, value-keyword-case */
+  ${/* sc-declaration */ Polished.ellipsis()}
+  /* stylelint-enable csstree/validator, value-keyword-case */
   padding: 0 1rem;
 `
 /* tslint:enable:strict-string-expressions */
+/* eslint-enable capitalized-comments, no-inline-comments */
 
 // #endregion /** Styled Components */

@@ -1,0 +1,43 @@
+diff --git a/node_modules/husky/lib/getConf.js b/node_modules/husky/lib/getConf.js
+index 2475f61..e4f4a4f 100644
+--- a/node_modules/husky/lib/getConf.js
++++ b/node_modules/husky/lib/getConf.js
+@@ -2,7 +2,21 @@
+ Object.defineProperty(exports, "__esModule", { value: true });
+ const cosmiconfig_1 = require("cosmiconfig");
+ function getConf(dir) {
+-    const explorer = cosmiconfig_1.cosmiconfigSync('husky');
++    const explorer = cosmiconfig_1.cosmiconfigSync('husky', {
++      loaders: {
++        '.json': function cosmiconfigLoadJsonWithComments(filepath, content) {
++          const parseJson = require('parse-json');
++          const stripJsonComments = require('strip-json-comments');
++          try {
++            const result = parseJson(stripJsonComments(content));
++            return result;
++          } catch (error) {
++            error.message = `JSON Error in ${filepath}:\n${error.message}`;
++            throw error;
++          }
++        },
++      },
++    });
+     const { config = {} } = explorer.search(dir) || {};
+     const defaults = {
+         skipCI: true,
+diff --git a/node_modules/husky/package.json b/node_modules/husky/package.json
+index cb444c4..705da9f 100644
+--- a/node_modules/husky/package.json
++++ b/node_modules/husky/package.json
+@@ -55,9 +55,11 @@
+     "cosmiconfig": "^7.0.0",
+     "find-versions": "^4.0.0",
+     "opencollective-postinstall": "^2.0.2",
++    "parse-json": "*",
+     "pkg-dir": "^5.0.0",
+     "please-upgrade-node": "^3.2.0",
+     "slash": "^3.0.0",
++    "strip-json-comments": "*",
+     "which-pm-runs": "^1.0.0"
+   },
+   "devDependencies": {

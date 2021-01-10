@@ -1,4 +1,4 @@
-import { Quote } from 'src/screens/QuoteOverview/QuoteOverviewForm'
+import type { Quote } from 'src/screens/QuoteOverview/QuoteOverviewForm'
 
 export type UpdateQuoteRequest = {
   quote: {
@@ -98,14 +98,14 @@ export const mockUpdateQuoteResponse: UpdateQuoteResponse = {
         description:
           'The maximum amount covered for damages caused by asteroid collisions.',
         title: 'Asteroid Collision Limit',
-        values: [100000, 300000, 500000, 1000000], // tslint:disable-line:no-magic-numbers
+        values: [100000, 300000, 500000, 1000000],
       },
       deductible: {
         default: 500,
         description:
           'The amount of money you will pay in an insurance claim before the insurance coverage kicks in.',
         title: 'Deductible',
-        values: [500, 1000, 2000], // tslint:disable-line:no-magic-numbers
+        values: [500, 1000, 2000],
       },
     },
     variable_selections: {
@@ -117,7 +117,7 @@ export const mockUpdateQuoteResponse: UpdateQuoteResponse = {
 
 export type Dependencies = {
   fetchClient: typeof fetch
-  getUrl(quoteId: Quote['quoteId']): string
+  getUrl: (quoteId: Quote['quoteId']) => string
 }
 
 export type UpdateQuote = (
@@ -139,17 +139,19 @@ export const generateUpdateQuote: GenerateUpdateQuote = (
     },
   )
 
-  return response.json()
+  const json: UpdateQuoteResponse = (await response.json()) as UpdateQuoteResponse
+
+  return json
 }
 
-export const mockUpdateQuote: UpdateQuote = (
+export const mockUpdateQuote: UpdateQuote = async (
   request: UpdateQuoteRequest,
-): Promise<UpdateQuoteResponse> =>
-  generateUpdateQuote({
+): Promise<UpdateQuoteResponse> => {
+  const updateQuoteResponse: UpdateQuoteResponse = await generateUpdateQuote({
     fetchClient: async (): Promise<Response> => {
       const responseLike: Pick<Response, 'json'> = {
-        json: (): Promise<UpdateQuoteResponse> =>
-          Promise.resolve({
+        json: async (): Promise<UpdateQuoteResponse> => {
+          const json: UpdateQuoteResponse = await Promise.resolve({
             ...mockUpdateQuoteResponse,
             quote: {
               ...mockUpdateQuoteResponse.quote,
@@ -171,15 +173,21 @@ export const mockUpdateQuote: UpdateQuote = (
                 deductible: request.quote.variable_selections.deductible,
               },
             },
-          }),
+          })
+
+          return json
+        },
       }
 
-      const response: Response = responseLike as Response
+      const response: Response = await Promise.resolve(responseLike as Response)
 
-      return Promise.resolve(response)
+      return response
     },
     getUrl: (): string => '',
   })(request)
+
+  return updateQuoteResponse
+}
 
 export type QuoteToUpdateQuoteRequest = (quote: Quote) => UpdateQuoteRequest
 
@@ -197,7 +205,7 @@ export const quoteToUpdateQuoteRequest: QuoteToUpdateQuoteRequest = (
       city: quote.ratingAddress.city,
       line_1: quote.ratingAddress.line1,
       line_2:
-        quote.ratingAddress.line2 === '' ? null : quote.ratingAddress.line2, // tslint:disable-line:no-null-keyword
+        quote.ratingAddress.line2 === '' ? null : quote.ratingAddress.line2,
       postal: quote.ratingAddress.postal,
       region: quote.ratingAddress.region,
     },
@@ -236,9 +244,14 @@ export const updateQuoteResponseToQuote: UpdateQuoteResponseToQuote = (
     region: updateQuoteResponse.quote.rating_address.region,
   },
   variableOptions: {
-    asteroidCollision:
-      updateQuoteResponse.quote.variable_options.asteroid_collision,
-    deductible: updateQuoteResponse.quote.variable_options.deductible,
+    asteroidCollision: updateQuoteResponse.quote.variable_options
+      .asteroid_collision as Quote['variableOptions']['asteroidCollision'] & {
+      values: Array<number> & { 0: number; 1: number }
+    },
+    deductible: updateQuoteResponse.quote.variable_options
+      .deductible as Quote['variableOptions']['deductible'] & {
+      values: Array<number> & { 0: number; 1: number }
+    },
   },
   variableSelections: {
     asteroidCollision:

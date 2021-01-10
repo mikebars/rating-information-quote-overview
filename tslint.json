@@ -1,9 +1,26 @@
 {
+  /***************************************************************************/
+  /* `rating-information-quote-overview`                                     */
+  /* `Workspace`                                                             */
+  /* `tslint.json`                                                           */
+  /***************************************************************************/
+
+  // JSON schema for TSLint configuration files.
+  "$schema": "http://json.schemastore.org/tslint",
+
+  // The severity level used when a rule specifies "default" as its severity level.
+  // If undefined, "error" is used.
   "defaultSeverity": "error",
+
+  // The name of a built-in configuration preset,
+  // or a path or array of paths to other configuration files which are extended by this configuration.
+  // These values are handled using node module resolution semantics.
   "extends": [
     "tslint:all",
     "tslint:latest",
     "tslint:recommended",
+    "tslint-consistent-codestyle",
+    "tslint-eslint-rules",
     "tslint-microsoft-contrib/latest",
     "tslint-microsoft-contrib/recommended",
     "tslint-react",
@@ -11,28 +28,120 @@
     "tslint-plugin-prettier",
     "tslint-config-prettier"
   ],
+
+  // A map of rules that will be used to lint JavaScript files.
+  // These rules apply to `.js` and `.jsx` files.
   "jsRules": true,
+
+  // Additional linter options.
+  "linterOptions": {
+    // An array of globs.
+    // Any file matching these globs will not be linted.
+    // All exclude patterns are relative to the configuration file they were specified in.
+    "exclude": [
+      "!**//.*.cjs",
+      "!**//.*.js",
+      "!**//.*.jsx",
+      "!**//.*.mjs",
+      "!**//.*.ts",
+      "!**//.*.tsx",
+      "!**/*.cjs",
+      "!**/*.js",
+      "!**/*.jsx",
+      "!**/*.mjs",
+      "!**/*.ts",
+      "!**/*.tsx",
+      "**/build/**",
+      "**/coverage/**",
+      "**/node_modules/**",
+      "**/patches/**",
+      "**/public/**"
+    ]
+  },
+
+  // A map of rules that will be used to lint TypeScript files.
+  // These rules apply to `.ts` and `.tsx` files.
   "rules": {
+    // Requires using either 'T[]' or 'Array' for arrays.
     "array-type": [true, "generic"],
+
+    // Suggests to convert `() => { return x; }` to `() => x`.
     "arrow-return-shorthand": true,
+
+    // Enforces formatting rules for single-line comments.
+    "comment-format": [true, "check-space"],
+
+    // Enforces documentation for important items be filled out.
     "completed-docs": false,
+
+    // The name of the exported module must match the filename of the source file.
     "export-name": false,
+
+    // Enforces a consistent file naming convention.
     "file-name-casing": [false, { "*": "camel-case" }],
+
+    // The name of the imported module must match the name of the thing being imported.
     "import-name": false,
+
+    // Requires interface names to begin with a capital 'I'
     "interface-name": false,
+
+    // Prefer an interface declaration over a type literal (`type T = { ... }`)
     "interface-over-type-literal": false,
+
+    // Requires that boolean prop values are explicitly set.
+    "jsx-boolean-value": false,
+
+    // This rule creates violations if:
+    // - an anonymous function is passed as a JSX attribute.
     "jsx-no-lambda": false,
+
+    // Requires that a default import have the same name as the declaration it imports.
+    "match-default-export-name": false,
+
+    // Requires files to remain under a certain number of lines.
+    "max-file-line-count": false,
+
+    // Avoid long functions.
+    // The line count of a function body must not exceed the value configured within this rule's options.
     "max-func-body-length": false,
+
+    // Requires type unions to remain under a certain number of members.
+    "max-union-size": false,
+
+    // Functions should not have too many lines of code.
     "no-big-function": false,
+
+    // Disallows importing modules that are not listed as dependency in the project’s package.json.
     "no-implicit-dependencies": [true, ["src"]],
+
+    // Avoid import statements with side-effect.
     "no-import-side-effect": [
       true,
       {
-        "ignore-module": "\\.css$"
+        "ignore-module": "\\.(css|sass|scss)$"
       }
     ],
+
+    // Disallows the use constant number values outside of variable assignments.
+    "no-magic-numbers": false,
+
+    // Disallows use of the `null` keyword literal.
+    "no-null-keyword": false,
+
+    // Disallows invocation of `require()`.
+    "no-require-imports": false,
+
+    //  Avoid single line block comments and use single line comments instead.
     "no-single-line-block-comment": false,
+
+    // Disallows importing any submodule.
     "no-submodule-imports": false,
+
+    // Disallows declaring a variable that is directly returned.
+    "no-unnecessary-local-variable": false,
+
+    // Requires that import statements be alphabetized.
     "ordered-imports": [
       true,
       {
@@ -43,10 +152,28 @@
         ]
       }
     ],
+
+    // Use array literal syntax when declaring or instantiating array types.
     "prefer-array-literal": [true, { "allow-type-parameters": true }],
+
+    // Prefer immediately returning a value rather than declaring a variable and returning it.
+    "prefer-immediate-return": false,
+
+    // Prefer `foo(): void` over `foo: () => void` in interfaces and types.
+    "prefer-method-signature": false,
+
+    // Prefer the tradition type casts instead of the new 'as-cast' syntax.
     "prefer-type-cast": false,
+
+    // Runs Prettier as a TSLint rule.
     "prettier": true,
+
+    // This rule creates violations if:
+    // - an anonymous function is passed as a JSX attribute.
+    // - a function instantiated in local scope is passed as a JSX attribute.
     "react-this-binding-issue": false,
+
+    // Requires type definitions to exist.
     "typedef": [
       true,
       "array-destructuring",
@@ -60,5 +187,14 @@
       "variable-declaration"
     ]
   },
-  "rulesDirectory": ["tslint-microsoft-contrib", "tslint-plugin-prettier"]
+
+  // A path to a directory or an array of paths to directories of custom rules.
+  // These values are handled using node module resolution semantics,
+  // if an `index.js` is placed in your rules directory.
+  "rulesDirectory": [
+    "tslint-consistent-codestyle",
+    "tslint-eslint-rules",
+    "tslint-microsoft-contrib",
+    "tslint-plugin-prettier"
+  ]
 }

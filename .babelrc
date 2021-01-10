@@ -1,3 +1,439 @@
 {
-  "presets": ["react-app"]
+  /***************************************************************************/
+  /* `rating-information-quote-overview`                                     */
+  /* `Workspace`                                                             */
+  /* `.babelrc`                                                              */
+  /***************************************************************************/
+
+  // JSON schema for Babel configuration files.
+  // "$schema": "http://json.schemastore.org/babelrc",
+
+  // Include the AST in the returned object.
+  // "ast": false,
+
+  // Attach a comment after all non-user injected code.
+  // "auxiliaryCommentAfter": "",
+
+  // Attach a comment before all non-user injected code.
+  // "auxiliaryCommentBefore": "",
+
+  // Enable code generation.
+  // "code": true,
+
+  // Output comments in generated output.
+  // "comments": true,
+
+  // Do not include superfluous whitespace characters and line terminators.
+  // When set to "auto" compact is set to true on input sizes of >500KB.
+  // "compact": "auto",
+
+  // This is an object of keys that represent different environments.
+  // For example, you may have: `{ env: { production: { /* specific options */ } } }`
+  // which will use those options when the environment variable BABEL_ENV is set to "production".
+  // If BABEL_ENV isn't set then NODE_ENV will be used, if it's not set then it defaults to "development".
+  "env": {
+    /***************************************************************************/
+    /* `rating-information-quote-overview`                                     */
+    /* `Workspace`                                                             */
+    /* `.babelrc`                                                              */
+    /* `development`                                                           */
+    /***************************************************************************/
+
+    // Configuration options to use when the environment variable BABEL_ENV is set to "development".
+    "development": {
+      // Include the AST in the returned object.
+      // "ast": false,
+
+      // Attach a comment after all non-user injected code.
+      // "auxiliaryCommentAfter": "",
+
+      // Attach a comment before all non-user injected code.
+      // "auxiliaryCommentBefore": "",
+
+      // Enable code generation.
+      // "code": true,
+
+      // Output comments in generated output.
+      // "comments": true,
+
+      // Do not include superfluous whitespace characters and line terminators.
+      // When set to "auto" compact is set to true on input sizes of >500KB.
+      // "compact": "auto",
+
+      // This is an object of keys that represent different environments.
+      // For example, you may have: `{ env: { production: { /* specific options */ } } }`
+      // which will use those options when the environment variable BABEL_ENV is set to "production".
+      // If BABEL_ENV isn't set then NODE_ENV will be used, if it's not set then it defaults to "development".
+      // "env": {},
+
+      // A path to a .babelrc file to extend.
+      // "extends": "",
+
+      // Filename for use in errors etc.
+      // "filename": "",
+
+      // Filename relative to sourceRoot.
+      // (defaults to "filename")
+      // "filenameRelative": "",
+
+      // ANSI highlight syntax error code frames.
+      // "highlightCode": true,
+
+      // Opposite of the "only" option.
+      // "ignore": [],
+
+      // If true, attempt to load an input sourcemap from the file itself.
+      // If an object is provided, it will be treated as the source map object itself.
+      // "inputSourceMap": true,
+
+      // Keep extensions in module ids.
+      // "keepModuleIdExtensions": false,
+
+      // Specify a custom name for module ids.
+      // "moduleId": "",
+
+      // If truthy, insert an explicit id for modules.
+      // By default, all modules are anonymous.
+      // (Not available for common modules)
+      // "moduleIds": false,
+
+      // Optional prefix for the AMD module formatter that will be prepend to the filename on module definitions.
+      // (defaults to "sourceRoot")
+      // "moduleRoot": "",
+
+      // A glob, regex, or mixed array of both, matching paths to only compile.
+      // Can also be an array of arrays containing paths to explicitly match.
+      // When attempting to compile a non-matching file it's returned verbatim.
+      // "only": [],
+
+      // List of plugins to load and use.
+      "plugins": [],
+
+      // List of presets (a set of plugins) to load and use.
+      "presets": [
+        [
+          "react-app",
+          {
+            "flow": false,
+            "runtime": "automatic",
+            "typescript": true
+          }
+        ]
+      ]
+
+      // Retain line numbers.
+      // This will lead to wacky code but is handy for scenarios where you can't use source maps.
+      // NOTE: This will obviously not retain the columns.
+      // "retainLines": false,
+
+      // Set sources[0] on returned source map.
+      // (defaults to "filenameRelative")
+      // "sourceFileName": "",
+
+      // If truthy, adds a map property to returned output.
+      // If set to "inline", a comment with a sourceMappingURL directive is added to the bottom of the returned code.
+      // If set to "both" then a map property is returned as well as a source map comment appended.
+      // "sourceMaps": false,
+
+      // Set file on returned source map.
+      // (defaults to "filenameRelative")
+      // "sourceMapTarget": "",
+
+      // The root from which all sources are relative.
+      // (defaults to "moduleRoot")
+      // "sourceRoot": ""
+    },
+
+    /***************************************************************************/
+    /* `rating-information-quote-overview`                                     */
+    /* `Workspace`                                                             */
+    /* `.babelrc`                                                              */
+    /* `production`                                                            */
+    /***************************************************************************/
+
+    // Configuration options to use when the environment variable BABEL_ENV is set to "production".
+    "production": {
+      // Include the AST in the returned object.
+      // "ast": false,
+
+      // Attach a comment after all non-user injected code.
+      // "auxiliaryCommentAfter": "",
+
+      // Attach a comment before all non-user injected code.
+      // "auxiliaryCommentBefore": "",
+
+      // Enable code generation.
+      // "code": true,
+
+      // Output comments in generated output.
+      // "comments": true,
+
+      // Do not include superfluous whitespace characters and line terminators.
+      // When set to "auto" compact is set to true on input sizes of >500KB.
+      // "compact": "auto",
+
+      // This is an object of keys that represent different environments.
+      // For example, you may have: `{ env: { production: { /* specific options */ } } }`
+      // which will use those options when the environment variable BABEL_ENV is set to "production".
+      // If BABEL_ENV isn't set then NODE_ENV will be used, if it's not set then it defaults to "development".
+      // "env": {},
+
+      // A path to a .babelrc file to extend.
+      // "extends": "",
+
+      // Filename for use in errors etc.
+      // "filename": "",
+
+      // Filename relative to sourceRoot.
+      // (defaults to "filename")
+      // "filenameRelative": "",
+
+      // ANSI highlight syntax error code frames.
+      // "highlightCode": true,
+
+      // Opposite of the "only" option.
+      // "ignore": [],
+
+      // If true, attempt to load an input sourcemap from the file itself.
+      // If an object is provided, it will be treated as the source map object itself.
+      // "inputSourceMap": true,
+
+      // Keep extensions in module ids.
+      // "keepModuleIdExtensions": false,
+
+      // Specify a custom name for module ids.
+      // "moduleId": "",
+
+      // If truthy, insert an explicit id for modules.
+      // By default, all modules are anonymous.
+      // (Not available for common modules)
+      // "moduleIds": false,
+
+      // Optional prefix for the AMD module formatter that will be prepend to the filename on module definitions.
+      // (defaults to "sourceRoot")
+      // "moduleRoot": "",
+
+      // A glob, regex, or mixed array of both, matching paths to only compile.
+      // Can also be an array of arrays containing paths to explicitly match.
+      // When attempting to compile a non-matching file it's returned verbatim.
+      // "only": [],
+
+      // List of plugins to load and use.
+      "plugins": [],
+
+      // List of presets (a set of plugins) to load and use.
+      "presets": [
+        [
+          "react-app",
+          {
+            "flow": false,
+            "runtime": "automatic",
+            "typescript": true
+          }
+        ]
+      ]
+
+      // Retain line numbers.
+      // This will lead to wacky code but is handy for scenarios where you can't use source maps.
+      // NOTE: This will obviously not retain the columns.
+      // "retainLines": false,
+
+      // Set sources[0] on returned source map.
+      // (defaults to "filenameRelative")
+      // "sourceFileName": "",
+
+      // If truthy, adds a map property to returned output.
+      // If set to "inline", a comment with a sourceMappingURL directive is added to the bottom of the returned code.
+      // If set to "both" then a map property is returned as well as a source map comment appended.
+      // "sourceMaps": false,
+
+      // Set file on returned source map.
+      // (defaults to "filenameRelative")
+      // "sourceMapTarget": "",
+
+      // The root from which all sources are relative.
+      // (defaults to "moduleRoot")
+      // "sourceRoot": ""
+    },
+
+    /***************************************************************************/
+    /* `rating-information-quote-overview`                                     */
+    /* `Workspace`                                                             */
+    /* `.babelrc`                                                              */
+    /* `test`                                                                  */
+    /***************************************************************************/
+
+    // Configuration options to use when the environment variable BABEL_ENV is set to "test".
+    "test": {
+      // Include the AST in the returned object.
+      // "ast": false,
+
+      // Attach a comment after all non-user injected code.
+      // "auxiliaryCommentAfter": "",
+
+      // Attach a comment before all non-user injected code.
+      // "auxiliaryCommentBefore": "",
+
+      // Enable code generation.
+      // "code": true,
+
+      // Output comments in generated output.
+      // "comments": true,
+
+      // Do not include superfluous whitespace characters and line terminators.
+      // When set to "auto" compact is set to true on input sizes of >500KB.
+      // "compact": "auto",
+
+      // This is an object of keys that represent different environments.
+      // For example, you may have: `{ env: { production: { /* specific options */ } } }`
+      // which will use those options when the environment variable BABEL_ENV is set to "production".
+      // If BABEL_ENV isn't set then NODE_ENV will be used, if it's not set then it defaults to "development".
+      // "env": {},
+
+      // A path to a .babelrc file to extend.
+      // "extends": "",
+
+      // Filename for use in errors etc.
+      // "filename": "",
+
+      // Filename relative to sourceRoot.
+      // (defaults to "filename")
+      // "filenameRelative": "",
+
+      // ANSI highlight syntax error code frames.
+      // "highlightCode": true,
+
+      // Opposite of the "only" option.
+      // "ignore": [],
+
+      // If true, attempt to load an input sourcemap from the file itself.
+      // If an object is provided, it will be treated as the source map object itself.
+      // "inputSourceMap": true,
+
+      // Keep extensions in module ids.
+      // "keepModuleIdExtensions": false,
+
+      // Specify a custom name for module ids.
+      // "moduleId": "",
+
+      // If truthy, insert an explicit id for modules.
+      // By default, all modules are anonymous.
+      // (Not available for common modules)
+      // "moduleIds": false,
+
+      // Optional prefix for the AMD module formatter that will be prepend to the filename on module definitions.
+      // (defaults to "sourceRoot")
+      // "moduleRoot": "",
+
+      // A glob, regex, or mixed array of both, matching paths to only compile.
+      // Can also be an array of arrays containing paths to explicitly match.
+      // When attempting to compile a non-matching file it's returned verbatim.
+      // "only": [],
+
+      // List of plugins to load and use.
+      "plugins": [],
+
+      // List of presets (a set of plugins) to load and use.
+      "presets": [
+        [
+          "react-app",
+          {
+            "flow": false,
+            "runtime": "automatic",
+            "typescript": true
+          }
+        ]
+      ]
+
+      // Retain line numbers.
+      // This will lead to wacky code but is handy for scenarios where you can't use source maps.
+      // NOTE: This will obviously not retain the columns.
+      // "retainLines": false,
+
+      // Set sources[0] on returned source map.
+      // (defaults to "filenameRelative")
+      // "sourceFileName": "",
+
+      // If truthy, adds a map property to returned output.
+      // If set to "inline", a comment with a sourceMappingURL directive is added to the bottom of the returned code.
+      // If set to "both" then a map property is returned as well as a source map comment appended.
+      // "sourceMaps": false,
+
+      // Set file on returned source map.
+      // (defaults to "filenameRelative")
+      // "sourceMapTarget": "",
+
+      // The root from which all sources are relative.
+      // (defaults to "moduleRoot")
+      // "sourceRoot": ""
+    }
+  }
+
+  // A path to a .babelrc file to extend.
+  // "extends": "",
+
+  // Filename for use in errors etc.
+  // "filename": "",
+
+  // Filename relative to sourceRoot.
+  // (defaults to "filename")
+  // "filenameRelative": "",
+
+  // ANSI highlight syntax error code frames.
+  // "highlightCode": true,
+
+  // Opposite of the "only" option.
+  // "ignore": [],
+
+  // If true, attempt to load an input sourcemap from the file itself.
+  // If an object is provided, it will be treated as the source map object itself.
+  // "inputSourceMap": true,
+
+  // Keep extensions in module ids.
+  // "keepModuleIdExtensions": false,
+
+  // Specify a custom name for module ids.
+  // "moduleId": "",
+
+  // If truthy, insert an explicit id for modules.
+  // By default, all modules are anonymous.
+  // (Not available for common modules)
+  // "moduleIds": false,
+
+  // Optional prefix for the AMD module formatter that will be prepend to the filename on module definitions.
+  // (defaults to "sourceRoot")
+  // "moduleRoot": "",
+
+  // A glob, regex, or mixed array of both, matching paths to only compile.
+  // Can also be an array of arrays containing paths to explicitly match.
+  // When attempting to compile a non-matching file it's returned verbatim.
+  // "only": [],
+
+  // List of plugins to load and use.
+  // "plugins": [],
+
+  // List of presets (a set of plugins) to load and use.
+  // "presets": [],
+
+  // Retain line numbers.
+  // This will lead to wacky code but is handy for scenarios where you can't use source maps.
+  // NOTE: This will obviously not retain the columns.
+  // "retainLines": false,
+
+  // Set sources[0] on returned source map.
+  // (defaults to "filenameRelative")
+  // "sourceFileName": "",
+
+  // If truthy, adds a map property to returned output.
+  // If set to "inline", a comment with a sourceMappingURL directive is added to the bottom of the returned code.
+  // If set to "both" then a map property is returned as well as a source map comment appended.
+  // "sourceMaps": false,
+
+  // Set file on returned source map.
+  // (defaults to "filenameRelative")
+  // "sourceMapTarget": "",
+
+  // The root from which all sources are relative.
+  // (defaults to "moduleRoot")
+  // "sourceRoot": ""
 }

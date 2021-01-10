@@ -1,0 +1,19 @@
+{
+  /***************************************************************************/
+  /* `rating-information-quote-overview`                                     */
+  /* `Workspace`                                                             */
+  /* `.lintstagedrc.json`                                                    */
+  /***************************************************************************/
+
+  // JSON schema for lint-staged configuration files.
+  "$schema": "http://json.schemastore.org/lintstagedrc.schema",
+
+  // Tasks to run on all files.
+  "*": [
+    "yarn lint:prettier",
+    "yarn lint:eslint",
+    "yarn lint:stylelint",
+    "yarn lint:tslint",
+    "yarn lint:tsc"
+  ]
+}

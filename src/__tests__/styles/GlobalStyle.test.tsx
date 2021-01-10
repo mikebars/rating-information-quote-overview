@@ -1,5 +1,4 @@
 import * as ReactTestingLibrary from '@testing-library/react'
-import * as React from 'react'
 
 import { GlobalStyle } from 'src/styles/GlobalStyle'
 

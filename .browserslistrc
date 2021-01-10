@@ -1,0 +1,11 @@
+###########################################################################
+# `rating-information-quote-overview`                                     #
+# `Workspace`                                                             #
+# `.browserslistrc`                                                       #
+###########################################################################
+
+# Browsers to support.
+>= 0%
+
+# Node versions to support.
+maintained node versions

@@ -1,0 +1,43 @@
+{
+  /***************************************************************************/
+  /* `rating-information-quote-overview`                                     */
+  /* `Workspace`                                                             */
+  /* `serve.json`                                                            */
+  /***************************************************************************/
+
+  // JSON schema for Serve configuration files.
+  "$schema": "./.vscode/schemas/serve.schema.json"
+
+  // Set the extensions to be stripped from paths.
+  // "cleanUrls": true,
+
+  // Disable directory listing or restrict it to certain paths.
+  // "directoryListing": true,
+
+  // Calculate a strong ETag response header, instead of Last-Modified.
+  // "etag": true,
+
+  // Set custom headers for specific paths.
+  // "headers": [],
+
+  // Set a sub directory to be served.
+  // "public": "",
+
+  // Forward paths to different paths or external URLs.
+  // "redirects": [],
+
+  // If a directory only contains one file, render it.
+  // "renderSingle": true,
+
+  // Rewrite paths to different paths.
+  // "rewrites": [],
+
+  // Resolve symlinks instead of rendering a 404 error.
+  // "symlinks": true,
+
+  // Remove or add trailing slashes to all paths.
+  // "trailingSlash": true,
+
+  // Exclude paths from the directory listing.
+  // "unlisted": []
+}

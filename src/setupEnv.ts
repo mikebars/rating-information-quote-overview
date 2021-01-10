@@ -1,7 +1,7 @@
-import { default as dotenv } from 'dotenv'
-import { default as dotenvExpand } from 'dotenv-expand'
+import * as dotenv from 'dotenv'
+import dotenvExpand from 'dotenv-expand'
 import * as fs from 'fs'
-import * as path from 'path'
+import path from 'path'
 
 const NODE_ENV: NodeJS.ProcessEnv['NODE_ENV'] | undefined = process.env
   .NODE_ENV as NodeJS.ProcessEnv['NODE_ENV'] | undefined

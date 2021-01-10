@@ -1,0 +1,13 @@
+diff --git a/node_modules/commitizen/dist/configLoader/getContent.js b/node_modules/commitizen/dist/configLoader/getContent.js
+index 5fa3aa5..51d6de7 100644
+--- a/node_modules/commitizen/dist/configLoader/getContent.js
++++ b/node_modules/commitizen/dist/configLoader/getContent.js
+@@ -632,7 +632,7 @@ function readConfigContent(configPath) {
+   }) : (cov_1ia30hret7.b[1][1]++, contents => {
+     cov_1ia30hret7.f[2]++;
+     cov_1ia30hret7.s[5]++;
+-    return JSON.parse(contents);
++    return JSON.parse((0, _stripJsonComments.default)(contents));
+   }));
+   cov_1ia30hret7.s[6]++;
+ 

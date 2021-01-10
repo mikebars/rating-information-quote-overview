@@ -1,5 +1,5 @@
 import * as ReactTestingLibrary from '@testing-library/react'
-import * as React from 'react'
+import type * as React from 'react'
 
 import { QuoteOverview } from 'src/screens/QuoteOverview/QuoteOverview'
 import { defaultQuote } from 'src/screens/QuoteOverview/QuoteOverviewForm'
@@ -28,10 +28,6 @@ describe('quoteOverview', (): void => {
       }
 
       .c2 {
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -39,6 +35,10 @@ describe('quoteOverview', (): void => {
         -webkit-flex-direction: column;
         -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
         -webkit-box-pack: center;
         -webkit-justify-content: center;
         -ms-flex-pack: center;
@@ -55,13 +55,13 @@ describe('quoteOverview', (): void => {
       }
 
       .c0 {
-        height: 100%;
         width: 100%;
+        height: 100%;
       }
 
       .c1 {
-        font-size: 2rem;
         padding: 2rem;
+        font-size: 2rem;
         text-align: center;
       }
 

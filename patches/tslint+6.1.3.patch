@@ -1,0 +1,14 @@
+diff --git a/node_modules/tslint/lib/linter.js b/node_modules/tslint/lib/linter.js
+index 51731e5..1e3f108 100644
+--- a/node_modules/tslint/lib/linter.js
++++ b/node_modules/tslint/lib/linter.js
+@@ -89,8 +89,7 @@ var Linter = /** @class */ (function () {
+      */
+     Linter.getFileNames = function (program) {
+         return utils_1.mapDefined(program.getSourceFiles(), function (file) {
+-            return file.fileName.endsWith(".d.ts") ||
+-                file.fileName.endsWith(".json") ||
++            return file.fileName.endsWith(".json") ||
+                 program.isSourceFileFromExternalLibrary(file)
+                 ? undefined
+                 : file.fileName;

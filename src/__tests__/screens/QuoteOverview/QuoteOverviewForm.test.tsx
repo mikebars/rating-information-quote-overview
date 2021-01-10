@@ -1,6 +1,6 @@
 import * as ReactTestingLibrary from '@testing-library/react'
 import * as fc from 'fast-check'
-import * as React from 'react'
+import type * as React from 'react'
 
 import {
   defaultQuote,
@@ -15,9 +15,9 @@ import {
 
 // #region /** JEST_EXHAUSTIVE setup */
 
+/* eslint-disable-next-line prefer-destructuring */
 const JEST_EXHAUSTIVE: string | undefined = process.env.JEST_EXHAUSTIVE
 
-/* tslint:disable-next-line:no-magic-numbers */
 const JEST_EXHAUSTIVE_TEST_TIMEOUT: number = 60 * 60 * 1000
 
 fc.configureGlobal({
@@ -53,13 +53,19 @@ const quoteArbitrary: QuoteArbitrary = (): fc.Arbitrary<Quote> =>
           default: fc.oneof(fc.integer(), fc.constant(undefined)),
           description: fc.string(),
           title: fc.string(),
-          values: fc.set(fc.integer(), 2, 10), // tslint:disable-line:no-magic-numbers
+          values: fc.set(fc.integer(), {
+            maxLength: 10,
+            minLength: 2,
+          }) as fc.Arbitrary<Array<number> & { 0: number; 1: number }>,
         }),
         deductible: fc.record({
           default: fc.oneof(fc.integer(), fc.constant(undefined)),
           description: fc.string(),
           title: fc.string(),
-          values: fc.set(fc.integer(), 2, 10), // tslint:disable-line:no-magic-numbers
+          values: fc.set(fc.integer(), {
+            maxLength: 10,
+            minLength: 2,
+          }) as fc.Arbitrary<Array<number> & { 0: number; 1: number }>,
         }),
       }),
       variableSelections: fc.record({
@@ -99,6 +105,7 @@ const quoteArbitrary: QuoteArbitrary = (): fc.Arbitrary<Quote> =>
 
 // #endregion /** fast-check arbitraries */
 
+/* eslint-disable-next-line sonarjs/cognitive-complexity */
 describe('quoteOverviewForm', (): void => {
   it('quoteOverviewForm - getDefaultAsteroidCollision test - no default', (): void => {
     expect.hasAssertions()
@@ -118,7 +125,7 @@ describe('quoteOverviewForm', (): void => {
             defaultAsteroidCollision ===
             quote.variableOptions.asteroidCollision.values[0]
 
-          expect(defaultSetCorrectly).toBe(true)
+          expect(defaultSetCorrectly).toBeTrue()
 
           return defaultSetCorrectly
         },
@@ -146,7 +153,7 @@ describe('quoteOverviewForm', (): void => {
               defaultAsteroidCollision ===
               quote.variableOptions.asteroidCollision.default
 
-            expect(defaultSetCorrectly).toBe(true)
+            expect(defaultSetCorrectly).toBeTrue()
 
             return defaultSetCorrectly
           },
@@ -176,7 +183,7 @@ describe('quoteOverviewForm', (): void => {
             const defaultSetCorrectly: boolean =
               defaultDeductible === quote.variableOptions.deductible.values[0]
 
-            expect(defaultSetCorrectly).toBe(true)
+            expect(defaultSetCorrectly).toBeTrue()
 
             return defaultSetCorrectly
           },
@@ -206,7 +213,7 @@ describe('quoteOverviewForm', (): void => {
             const defaultSetCorrectly: boolean =
               defaultDeductible === quote.variableOptions.deductible.default
 
-            expect(defaultSetCorrectly).toBe(true)
+            expect(defaultSetCorrectly).toBeTrue()
 
             return defaultSetCorrectly
           },
@@ -273,7 +280,7 @@ describe('quoteOverviewForm', (): void => {
           const deductibleSelectSetToDefault: boolean =
             deductibleSelectElement.value === String(defaultDeductible)
 
-          expect(deductibleSelectSetToDefault).toBe(true)
+          expect(deductibleSelectSetToDefault).toBeTrue()
 
           ReactTestingLibrary.fireEvent.change(deductibleSelectElement, {
             target: { value: deductible },
@@ -282,7 +289,7 @@ describe('quoteOverviewForm', (): void => {
           const deductibleSelectUpdated: boolean =
             deductibleSelectElement.value === String(deductible)
 
-          expect(deductibleSelectUpdated).toBe(true)
+          expect(deductibleSelectUpdated).toBeTrue()
 
           expect(results).toStrictEqual([
             {
@@ -304,7 +311,7 @@ describe('quoteOverviewForm', (): void => {
             asteroidCollisionSelectElement.value ===
             String(defaultAsteroidCollision)
 
-          expect(asteroidCollisionSelectSetToDefault).toBe(true)
+          expect(asteroidCollisionSelectSetToDefault).toBeTrue()
 
           ReactTestingLibrary.fireEvent.change(asteroidCollisionSelectElement, {
             target: { value: asteroidCollision },
@@ -313,7 +320,7 @@ describe('quoteOverviewForm', (): void => {
           const asteroidCollisionSelectUpdated: boolean =
             asteroidCollisionSelectElement.value === String(asteroidCollision)
 
-          expect(asteroidCollisionSelectUpdated).toBe(true)
+          expect(asteroidCollisionSelectUpdated).toBeTrue()
 
           expect(results).toStrictEqual([
             {
@@ -335,7 +342,7 @@ describe('quoteOverviewForm', (): void => {
             asteroidCollisionSelectUpdated,
           ].every((updated: boolean): boolean => updated)
 
-          expect(allUpdated).toBe(true)
+          expect(allUpdated).toBeTrue()
 
           // #endregion /** all checks passed */
 
@@ -381,10 +388,6 @@ describe('quoteOverviewForm', (): void => {
       }
 
       .c0 {
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -392,6 +395,10 @@ describe('quoteOverviewForm', (): void => {
         -webkit-flex-direction: column;
         -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
         -webkit-box-pack: center;
         -webkit-justify-content: center;
         -ms-flex-pack: center;

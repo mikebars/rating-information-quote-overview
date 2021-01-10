@@ -1,0 +1,1399 @@
+{
+  /***************************************************************************/
+  /* `rating-information-quote-overview`                                     */
+  /* `Workspace`                                                             */
+  /* `.eslintrc.json`                                                        */
+  /***************************************************************************/
+
+  // JSON schema for ESLint configuration files.
+  "$schema": "http://json.schemastore.org/eslintrc",
+
+  // By default, ESLint supports only ECMAScript 5 syntax.
+  // You can override that setting to enable support for ECMAScript 6
+  // as well as JSX by using configuration settings.
+  // "ecmaFeatures": {},
+
+  // An environment defines global variables that are predefined.
+  // "env": {},
+
+  // If you want to extend a specific configuration file,
+  // you can use the extends property and specify the path to the file.
+  // The path can be either relative or absolute.
+  // "extends": [],
+
+  // Set each global variable name equal
+  // to true to allow the variable to be overwritten
+  // or false to disallow overwriting.
+  // "globals": {},
+
+  // Tell ESLint to ignore specific files and directories.
+  // Each value uses the same pattern as the `.eslintignore` file.
+  "ignorePatterns": [
+    "!**//.*.cjs",
+    "!**//.*.js",
+    "!**//.*.jsx",
+    "!**//.*.mjs",
+    "!**//.*.ts",
+    "!**//.*.tsx",
+    "!**/*.cjs",
+    "!**/*.js",
+    "!**/*.jsx",
+    "!**/*.mjs",
+    "!**/*.ts",
+    "!**/*.tsx",
+    "**/.next/**",
+    "**/coverage/**",
+    "**/node_modules/**",
+    "**/out/**",
+    "**/patches/**",
+    "**/public/**"
+  ],
+
+  // Prevent comments from changing config or rules.
+  // "noInlineConfig": false,
+
+  // Allows to override configuration for files and folders, specified by glob patterns.
+  "overrides": [
+    /***************************************************************************/
+    /* `rating-information-quote-overview`                                     */
+    /* `Workspace`                                                             */
+    /* `.eslintrc.json`                                                        */
+    /* `JavaScript`                                                            */
+    /***************************************************************************/
+
+    {
+      // By default, ESLint supports only ECMAScript 5 syntax.
+      // You can override that setting to enable support for ECMAScript 6 as well as JSX by using configuration settings.
+      // "ecmaFeatures": {
+      //   // Enable support for `arrowFunctions`.
+      //   // "arrowFunctions": false,
+
+      //   // Enable support for `binaryLiterals`.
+      //   // "binaryLiterals": false,
+
+      //   // Enable support for `blockBindings`.
+      //   // "blockBindings": false,
+
+      //   // Enable support for `classes`.
+      //   // "classes": false,
+
+      //   // Enable support for `defaultParams`.
+      //   // "defaultParams": false,
+
+      //   // Enable support for `destructuring`.
+      //   // "destructuring": false,
+
+      //   // Enable support for `experimentalObjectRestSpread`.
+      //   // "experimentalObjectRestSpread": false,
+
+      //   // Enable support for `forOf`.
+      //   // "forOf": false,
+
+      //   // Enable support for `generators`.
+      //   // "generators": false,
+
+      //   // Enable support for `globalReturn`.
+      //   // "globalReturn": false,
+
+      //   // Enable support for `impliedStrict`.
+      //   // "impliedStrict": false,
+
+      //   // Enable support for `jsx`.
+      //   // "jsx": false,
+
+      //   // Enable support for `modules`.
+      //   // "modules": false,
+
+      //   // Enable support for `objectLiteralComputedProperties`.
+      //   // "objectLiteralComputedProperties": false,
+
+      //   // Enable support for `objectLiteralDuplicateProperties`.
+      //   // "objectLiteralDuplicateProperties": false,
+
+      //   // Enable support for `objectLiteralShorthandMethods`.
+      //   // "objectLiteralShorthandMethods": false,
+
+      //   // Enable support for `objectLiteralShorthandProperties`.
+      //   // "objectLiteralShorthandProperties": false,
+
+      //   // Enable support for `octalLiterals`.
+      //   // "octalLiterals": false,
+
+      //   // Enable support for `regexUFlag`.
+      //   // "regexUFlag": false,
+
+      //   // Enable support for `regexYFlag`.
+      //   // "regexYFlag": false,
+
+      //   // Enable support for `restParams`.
+      //   // "restParams": false,
+
+      //   // Enable support for `spread`.
+      //   // "spread": false,
+
+      //   // Enable support for `superInFunctions`.
+      //   // "superInFunctions": false,
+
+      //   // Enable support for `templateStrings`.
+      //   // "templateStrings": false,
+
+      //   // Enable support for `unicodeCodePointEscapes`.
+      //   // "unicodeCodePointEscapes": false
+      // },
+
+      // An environment defines global variables that are predefined.
+      "env": {
+        // Define global variables for `amd`.
+        // "amd": false,
+
+        // Define global variables for `applescript`.
+        // "applescript": false,
+
+        // Define global variables for `atomtest`.
+        // "atomtest": false,
+
+        // Define global variables for `browser`.
+        "browser": true,
+
+        // Define global variables for `commonjs`.
+        "commonjs": true,
+
+        // Define global variables for `embertest`.
+        // "embertest": false,
+
+        // Define global variables for `es2017`.
+        "es2017": true,
+
+        // Define global variables for `es2020`.
+        "es2020": true,
+
+        // Define global variables for `es2021`.
+        "es2021": true,
+
+        // Define global variables for `es6`.
+        "es6": true,
+
+        // Define global variables for `greasemonkey`.
+        // "greasemonkey": false,
+
+        // Define global variables for `jasmine`.
+        // "jasmine": false,
+
+        // Define global variables for `jest`.
+        "jest": true,
+
+        // Define global variables for `jquery`.
+        // "jquery": false,
+
+        // Define global variables for `meteor`.
+        // "meteor": false,
+
+        // Define global variables for `mocha`.
+        // "mocha": false,
+
+        // Define global variables for `mongo`.
+        // "mongo": false,
+
+        // Define global variables for `nashorn`.
+        // "nashorn": false,
+
+        // Define global variables for `node`.
+        "node": true,
+
+        // Define global variables for `phantomjs`.
+        // "phantomjs": false,
+
+        // Define global variables for `prototypejs`.
+        // "prototypejs": false,
+
+        // Define global variables for `protractor`.
+        // "protractor": false,
+
+        // Define global variables for `qunit`.
+        // "qunit": false,
+
+        // Define global variables for `serviceworker`.
+        // "serviceworker": false,
+
+        // Define global variables for `shared-node-browser`.
+        "shared-node-browser": true
+
+        // Define global variables for `shelljs`.
+        // "shelljs": false,
+
+        // Define global variables for `webextensions`.
+        // "webextensions": false,
+
+        // Define global variables for `worker`.
+        // "worker": false
+      },
+
+      // If a file matches any of the 'excludedFiles' glob patterns, the 'overrides' configuration won’t apply.
+      // "excludedFiles": [],
+
+      // If you want to extend a specific configuration file, you can use the extends property and specify the path to the file.
+      // The path can be either relative or absolute.
+      "extends": [
+        // `eslint`
+        "eslint:recommended",
+        "eslint:all",
+
+        // `plugin`
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:eslint-comments/recommended",
+        "plugin:flowtype/recommended",
+        "plugin:import/errors",
+        "plugin:import/typescript",
+        "plugin:import/warnings",
+        "plugin:jest/recommended",
+        "plugin:jest/style",
+        "plugin:jest/all",
+        "plugin:jest-extended/recommended",
+        "plugin:jsx-a11y/recommended",
+        "plugin:jsx-a11y/strict",
+        "plugin:node/recommended",
+        "plugin:promise/recommended",
+        "plugin:react/recommended",
+        "plugin:react/all",
+        "plugin:react-hooks/recommended",
+        "plugin:sonarjs/recommended",
+        "plugin:testing-library/recommended",
+        "plugin:unicorn/recommended",
+
+        // `react-app`
+        "react-app",
+        "react-app/jest",
+
+        // `standard`
+        "standard",
+        "standard-jsx",
+        "standard-react",
+        "standard-with-typescript",
+
+        // `prettier` - must be last
+        "plugin:prettier/recommended",
+        "prettier",
+        "prettier/@typescript-eslint",
+        "prettier/babel",
+        "prettier/flowtype",
+        "prettier/react",
+        "prettier/standard",
+        "prettier/unicorn"
+      ],
+
+      // Glob pattern for files to apply 'overrides' configuration, relative to the directory of the config file.
+      "files": [
+        "**//.*.cjs",
+        "**//.*.js",
+        "**//.*.jsx",
+        "**//.*.mjs",
+        "**/*.cjs",
+        "**/*.js",
+        "**/*.jsx",
+        "**/*.mjs"
+      ],
+
+      // Set each global variable name equal to true to allow the variable to be overwritten or false to disallow overwriting.
+      // "globals": {},
+
+      // The parser ESLint should use.
+      "parser": "@babel/eslint-parser",
+
+      // The JavaScript language options to be supported.
+      // "parserOptions": {
+      //   // `@babel/eslint-parser` specific setting
+      //   // https://github.com/babel/babel/tree/main/eslint/babel-eslint-parser#additional-parser-configuration
+      //   // Set to true to allow import and export declarations to appear anywhere a statement is allowed if your build environment supports that.
+      //   // Otherwise import and export declarations can only appear at a program's top level.
+      //   // "allowImportExportEverywhere": false,
+
+      //   // `@babel/eslint-parser` specific setting
+      //   // https://github.com/babel/babel/tree/main/eslint/babel-eslint-parser#additional-parser-configuration
+      //   // An object containing Babel configuration options that are passed to Babel's parser at runtime.
+      //   // For cases where users might not want to use a Babel configuration file or are running Babel through another tool (such as Webpack with babel-loader).
+      //   // "babelOptions": {},
+
+      //   // By default, ESLint supports only ECMAScript 5 syntax.
+      //   // You can override that setting to enable support for ECMAScript 6 as well as JSX by using configuration settings.
+      //   // "ecmaFeatures": {
+      //   //   // Enable support for `arrowFunctions`.
+      //   //   // "arrowFunctions": false,
+
+      //   //   // Enable support for `binaryLiterals`.
+      //   //   // "binaryLiterals": false,
+
+      //   //   // Enable support for `blockBindings`.
+      //   //   // "blockBindings": false,
+
+      //   //   // Enable support for `classes`.
+      //   //   // "classes": false,
+
+      //   //   // Enable support for `defaultParams`.
+      //   //   // "defaultParams": false,
+
+      //   //   // Enable support for `destructuring`.
+      //   //   // "destructuring": false,
+
+      //   //   // Enable support for `experimentalObjectRestSpread`.
+      //   //   // "experimentalObjectRestSpread": false,
+
+      //   //   // Enable support for `forOf`.
+      //   //   // "forOf": false,
+
+      //   //   // Enable support for `generators`.
+      //   //   // "generators": false,
+
+      //   //   // Enable support for `globalReturn`.
+      //   //   // "globalReturn": false,
+
+      //   //   // Enable support for `impliedStrict`.
+      //   //   // "impliedStrict": false,
+
+      //   //   // Enable support for `jsx`.
+      //   //   // "jsx": false,
+
+      //   //   // Enable support for `modules`.
+      //   //   // "modules": false,
+
+      //   //   // Enable support for `objectLiteralComputedProperties`.
+      //   //   // "objectLiteralComputedProperties": false,
+
+      //   //   // Enable support for `objectLiteralDuplicateProperties`.
+      //   //   // "objectLiteralDuplicateProperties": false,
+
+      //   //   // Enable support for `objectLiteralShorthandMethods`.
+      //   //   // "objectLiteralShorthandMethods": false,
+
+      //   //   // Enable support for `objectLiteralShorthandProperties`.
+      //   //   // "objectLiteralShorthandProperties": false,
+
+      //   //   // Enable support for `octalLiterals`.
+      //   //   // "octalLiterals": false,
+
+      //   //   // Enable support for `regexUFlag`.
+      //   //   // "regexUFlag": false,
+
+      //   //   // Enable support for `regexYFlag`.
+      //   //   // "regexYFlag": false,
+
+      //   //   // Enable support for `restParams`.
+      //   //   // "restParams": false,
+
+      //   //   // Enable support for `spread`.
+      //   //   // "spread": false,
+
+      //   //   // Enable support for `superInFunctions`.
+      //   //   // "superInFunctions": false,
+
+      //   //   // Enable support for `templateStrings`.
+      //   //   // "templateStrings": false,
+
+      //   //   // Enable support for `unicodeCodePointEscapes`.
+      //   //   // "unicodeCodePointEscapes": false
+      //   // },
+
+      //   // Set to 3, 5, 6, 7, 8, 9, 10, 11 (default) or 12 to specify the version of ECMAScript syntax you want to use.
+      //   // You can also set to 2015 (same as 6), 2016 (same as 7), 2017 (same as 8), 2018 (same as 9), 2019 (same as 10), 2020 (same as 11) or 2021 (same as 12) to use the year-based naming.
+      //   // "ecmaVersion": 11,
+
+      //   // `@babel/eslint-parser` specific setting
+      //   // https://github.com/babel/babel/tree/main/eslint/babel-eslint-parser#additional-parser-configuration
+      //   // Set to false to allow @babel/eslint-parser to run on files that do not have a Babel configuration associated with them.
+      //   // This can be useful for linting files that are not transformed by Babel (such as tooling configuration files), though we recommend using the default parser via glob-based configuration.
+      //   // Note: @babel/eslint-parser will not parse any experimental syntax when no configuration file is found.
+      //   // "requireConfigFile": true,
+
+      //   // Set to "script" (default) or "module" if your code is in ECMAScript modules.
+      //   // "sourceType": "module"
+      // },
+
+      // ESLint supports the use of third-party plugins.
+      // Before using the plugin, you have to install it using npm.
+      "plugins": [
+        "@babel",
+        "@typescript-eslint/tslint",
+        "es",
+        "eslint-comments",
+        "flowtype",
+        "import",
+        "jest",
+        "jest-extended",
+        "jsx-a11y",
+        "node",
+        "prettier",
+        "promise",
+        "react",
+        "react-hooks",
+        "sonarjs",
+        "standard",
+        "testing-library",
+        "unicorn"
+      ],
+
+      // To specify a processor, specify the plugin name and processor name joined by a forward slash.
+      // "processor": "",
+
+      // ESLint comes with a large number of rules.
+      // You can modify which rules your project uses either using configuration comments or configuration files.
+      "rules": {
+        // ESLint rule enforcing comment capitalization.
+        "capitalized-comments": [
+          "error",
+          "always",
+          {
+            "ignoreConsecutiveComments": false,
+            "ignoreInlineComments": false,
+            "ignorePattern": "tslint"
+          }
+        ],
+
+        // ESLint rule enforcing allowed length of identifiers.
+        "id-length": "off",
+
+        // ESLint rule enforcing maximum allowed lines per file.
+        "max-lines": "off",
+
+        // ESLint rule enforcing maximum allowed lines per function.
+        "max-lines-per-function": "off",
+
+        // ESLint rule enforcing maximum allowed statements per function.
+        "max-statements": "off",
+
+        // ESLint rule enforcing disuse of 'magic' numbers.
+        "no-magic-numbers": "off",
+
+        // ESLint rule enforcing disuse of ternary operators.
+        "no-ternary": "off",
+
+        // ESLint rule enforcing disuse of 'undefined'.
+        "no-undefined": "off",
+
+        // ESLint rule enforcing import sorting.
+        "sort-imports": "off",
+
+        // ESLint rule enforcing consistent definition of array types using either T[] or Array<T>.
+        "@typescript-eslint/array-type": [
+          "error",
+          {
+            // Sets the array type expected for mutable cases.
+            "default": "generic",
+
+            // Sets the array type expected for readonly arrays.
+            // If this is omitted, then the value for default will be used.
+            "readonly": "generic"
+          }
+        ],
+
+        // ESLint rule enforcing consistent definition of types using either interface or type.
+        "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+
+        // ESLint rule enforcing disusage of 'require' statements except in import statements.
+        "@typescript-eslint/no-var-requires": "off",
+
+        // Runs TSLint as an ESLint rule and reports issues as individual ESLint issues.
+        // "@typescript-eslint/tslint/config": [
+        //   "warn",
+        //   {
+        //     // Path to tslint.json of your project.
+        //     "lintFile": "./tslint.json"
+
+        //     // tslint rules (will be used if `lintFile` is not specified).
+        //     // "rules": {},
+
+        //     // Array of paths to directories with rules, e.g. 'node_modules/tslint/lib/rules' (will be used if `lintFile` is not specified).
+        //     // "rulesDirectory": []
+        //   }
+        // ],
+
+        // ESLint rule enforcing imported modules can be resolved to a module on the local filesystem,
+        // as defined by standard Node 'require.resolve' behavior.
+        "import/no-unresolved": "off",
+
+        // ESLint rule enforcing snapshots are not too large.
+        "jest/no-large-snapshots": "off",
+
+        // ESLint rule enforcing imported modules exist.
+        "node/no-missing-import": [
+          "error",
+          {
+            // Additional modules to allow.
+            // "allowModules": [],
+
+            // Additional paths to try when resolving imports.
+            "resolvePaths": ["."],
+
+            // File extensions to try when resolving imports.
+            "tryExtensions": [
+              ".cjs",
+              ".d.ts",
+              ".js",
+              ".json",
+              ".json5",
+              ".jsx",
+              ".mjs",
+              ".node",
+              ".ts",
+              ".tsx"
+            ]
+          }
+        ],
+
+        // ESLint rule enforcing disusage of unsupported ECMAScript syntax.
+        "node/no-unsupported-features/es-syntax": [
+          "error",
+          {
+            // The ECMAScript syntax features to ignore.
+            "ignores": [
+              // ECMAScript 2015
+              "arrowFunctions",
+              "binaryNumericLiterals",
+              "blockScopedFunctions",
+              "blockScopedVariables",
+              "classes",
+              "computedProperties",
+              "defaultParameters",
+              "destructuring",
+              "forOfLoops",
+              "generators",
+              "modules",
+              "new.target",
+              "objectSuperProperties",
+              "octalNumericLiterals",
+              "propertyShorthands",
+              "regexpU",
+              "regexpY",
+              "restParameters",
+              "spreadElements",
+              "templateLiterals",
+              "unicodeCodePointEscapes",
+
+              // ECMAScript 2016
+              "exponentialOperators",
+
+              // ECMAScript 2017
+              "asyncFunctions",
+              "trailingCommasInFunctions",
+
+              // ECMAScript 2018
+              "asyncIteration",
+              "malformedTemplateLiterals",
+              "regexpLookbehind",
+              "regexpNamedCaptureGroups",
+              "regexpS",
+              "regexpUnicodeProperties",
+              "restSpreadProperties",
+
+              // ECMAScript 2019
+              "jsonSuperset",
+              "optionalCatchBinding",
+
+              // ECMAScript 2020
+              "bigint",
+              "dynamicImport"
+            ],
+
+            // The version range of Node that is supported.
+            "version": ">=8.0.0"
+          }
+        ],
+
+        // Runs Prettier as an ESLint rule and reports differences as individual ESLint issues.
+        "prettier/prettier": "error",
+
+        // ESLint rule enforcing consistent usage of destructuring assignment of props, state, and context.
+        "react/destructuring-assignment": [
+          "error",
+          "never",
+          {
+            // Ignore in class field declarations.
+            "ignoreClassFields": false
+          }
+        ],
+
+        // ESLint rule enforcing a specific function type for function components.
+        "react/function-component-definition": [
+          "error",
+          {
+            // Function type for named function components.
+            "namedComponents": "arrow-function",
+
+            // Function type for unnamed function components.
+            "unnamedComponents": "arrow-function"
+          }
+        ],
+
+        // ESLint rule enforcing allowed extensions that may contain JSX.
+        "react/jsx-filename-extension": [
+          "error",
+          {
+            "allow": "always",
+            "extensions": [".js", ".jsx", ".tsx"]
+          }
+        ],
+
+        // ESLint rule enforcing the allowed max depth in JSX.
+        "react/jsx-max-depth": "off",
+
+        // ESLint rule enforcing the disusage of string literals in JSX.
+        "react/jsx-no-literals": "off",
+
+        // Prevent React to be incorrectly marked as unused.
+        "react/jsx-uses-react": "off",
+
+        // Prevent missing React when using JSX.
+        "react/react-in-jsx-scope": "off",
+
+        // ESLint rule enforcing immediately returning a value rather than declaring a variable and returning it.
+        "sonarjs/prefer-immediate-return": "off",
+
+        // ESLint rule enforcing the casing for filenames.
+        "unicorn/filename-case": [
+          "error",
+          {
+            // The case to use ('camelCase', 'kebabCase', 'pascalCase', 'snakeCase').
+            // "case": "kebabCase",
+
+            // The cases to allow or disallow.
+            "cases": {
+              // Allow or disallow camelCase.
+              "camelCase": true,
+
+              // Allow or disallow kebabCase.
+              "kebabCase": true,
+
+              // Allow or disallow pascalCase.
+              "pascalCase": true,
+
+              // Allow or disallow snakeCase.
+              "snakeCase": true
+            }
+
+            // Filenames to ignore.
+            // "ignore": []
+          }
+        ],
+
+        // ESLint rule enforcing function references are not passed directly to iterator methods.
+        "unicorn/no-fn-reference-in-iterator": "off",
+
+        // ESLint rule enforcing 'null' is not used.
+        "unicorn/no-null": "off",
+
+        // ESLint rule enforcing 'undefined' is not used when unnecessary.
+        "unicorn/no-useless-undefined": "off",
+
+        // ESLint rule enforcing the disuse of abbreviations.
+        "unicorn/prevent-abbreviations": "off"
+      }
+
+      // ESLint supports adding shared settings into configuration file.
+      // You can add settings object to ESLint configuration file and it will be supplied to every rule that will be executed.
+      // This may be useful if you are adding custom rules and want them to have access to the same information and be easily configurable.
+      // "settings": {}
+    },
+
+    /***************************************************************************/
+    /* `rating-information-quote-overview`                                     */
+    /* `Workspace`                                                             */
+    /* `.eslintrc.json`                                                        */
+    /* `TypeScript`                                                            */
+    /***************************************************************************/
+
+    {
+      // By default, ESLint supports only ECMAScript 5 syntax.
+      // You can override that setting to enable support for ECMAScript 6 as well as JSX by using configuration settings.
+      // "ecmaFeatures": {
+      //   // Enable support for `arrowFunctions`.
+      //   // "arrowFunctions": false,
+
+      //   // Enable support for `binaryLiterals`.
+      //   // "binaryLiterals": false,
+
+      //   // Enable support for `blockBindings`.
+      //   // "blockBindings": false,
+
+      //   // Enable support for `classes`.
+      //   // "classes": false,
+
+      //   // Enable support for `defaultParams`.
+      //   // "defaultParams": false,
+
+      //   // Enable support for `destructuring`.
+      //   // "destructuring": false,
+
+      //   // Enable support for `experimentalObjectRestSpread`.
+      //   // "experimentalObjectRestSpread": false,
+
+      //   // Enable support for `forOf`.
+      //   // "forOf": false,
+
+      //   // Enable support for `generators`.
+      //   // "generators": false,
+
+      //   // Enable support for `globalReturn`.
+      //   // "globalReturn": false,
+
+      //   // Enable support for `impliedStrict`.
+      //   // "impliedStrict": false,
+
+      //   // Enable support for `jsx`.
+      //   // "jsx": false,
+
+      //   // Enable support for `modules`.
+      //   // "modules": false,
+
+      //   // Enable support for `objectLiteralComputedProperties`.
+      //   // "objectLiteralComputedProperties": false,
+
+      //   // Enable support for `objectLiteralDuplicateProperties`.
+      //   // "objectLiteralDuplicateProperties": false,
+
+      //   // Enable support for `objectLiteralShorthandMethods`.
+      //   // "objectLiteralShorthandMethods": false,
+
+      //   // Enable support for `objectLiteralShorthandProperties`.
+      //   // "objectLiteralShorthandProperties": false,
+
+      //   // Enable support for `octalLiterals`.
+      //   // "octalLiterals": false,
+
+      //   // Enable support for `regexUFlag`.
+      //   // "regexUFlag": false,
+
+      //   // Enable support for `regexYFlag`.
+      //   // "regexYFlag": false,
+
+      //   // Enable support for `restParams`.
+      //   // "restParams": false,
+
+      //   // Enable support for `spread`.
+      //   // "spread": false,
+
+      //   // Enable support for `superInFunctions`.
+      //   // "superInFunctions": false,
+
+      //   // Enable support for `templateStrings`.
+      //   // "templateStrings": false,
+
+      //   // Enable support for `unicodeCodePointEscapes`.
+      //   // "unicodeCodePointEscapes": false
+      // },
+
+      // An environment defines global variables that are predefined.
+      "env": {
+        // Define global variables for `amd`.
+        // "amd": false,
+
+        // Define global variables for `applescript`.
+        // "applescript": false,
+
+        // Define global variables for `atomtest`.
+        // "atomtest": false,
+
+        // Define global variables for `browser`.
+        "browser": true,
+
+        // Define global variables for `commonjs`.
+        "commonjs": true,
+
+        // Define global variables for `embertest`.
+        // "embertest": false,
+
+        // Define global variables for `es2017`.
+        "es2017": true,
+
+        // Define global variables for `es2020`.
+        "es2020": true,
+
+        // Define global variables for `es2021`.
+        "es2021": true,
+
+        // Define global variables for `es6`.
+        "es6": true,
+
+        // Define global variables for `greasemonkey`.
+        // "greasemonkey": false,
+
+        // Define global variables for `jasmine`.
+        // "jasmine": false,
+
+        // Define global variables for `jest`.
+        "jest": true,
+
+        // Define global variables for `jquery`.
+        // "jquery": false,
+
+        // Define global variables for `meteor`.
+        // "meteor": false,
+
+        // Define global variables for `mocha`.
+        // "mocha": false,
+
+        // Define global variables for `mongo`.
+        // "mongo": false,
+
+        // Define global variables for `nashorn`.
+        // "nashorn": false,
+
+        // Define global variables for `node`.
+        "node": true,
+
+        // Define global variables for `phantomjs`.
+        // "phantomjs": false,
+
+        // Define global variables for `prototypejs`.
+        // "prototypejs": false,
+
+        // Define global variables for `protractor`.
+        // "protractor": false,
+
+        // Define global variables for `qunit`.
+        // "qunit": false,
+
+        // Define global variables for `serviceworker`.
+        // "serviceworker": false,
+
+        // Define global variables for `shared-node-browser`.
+        "shared-node-browser": true
+
+        // Define global variables for `shelljs`.
+        // "shelljs": false,
+
+        // Define global variables for `webextensions`.
+        // "webextensions": false,
+
+        // Define global variables for `worker`.
+        // "worker": false
+      },
+
+      // If a file matches any of the 'excludedFiles' glob patterns, the 'overrides' configuration won’t apply.
+      // "excludedFiles": [],
+
+      // If you want to extend a specific configuration file, you can use the extends property and specify the path to the file.
+      // The path can be either relative or absolute.
+      "extends": [
+        // `eslint`
+        "eslint:recommended",
+        "eslint:all",
+
+        // `plugin`
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:eslint-comments/recommended",
+        "plugin:import/errors",
+        "plugin:import/typescript",
+        "plugin:import/warnings",
+        "plugin:jest/recommended",
+        "plugin:jest/style",
+        "plugin:jest/all",
+        "plugin:jest-extended/recommended",
+        "plugin:jsx-a11y/recommended",
+        "plugin:jsx-a11y/strict",
+        "plugin:node/recommended",
+        "plugin:promise/recommended",
+        "plugin:react/recommended",
+        "plugin:react/all",
+        "plugin:react-hooks/recommended",
+        "plugin:sonarjs/recommended",
+        "plugin:testing-library/recommended",
+        "plugin:unicorn/recommended",
+
+        // `react-app`
+        "react-app",
+        "react-app/jest",
+
+        // `standard`
+        "standard",
+        "standard-jsx",
+        "standard-react",
+        "standard-with-typescript",
+
+        // `prettier` - must be last
+        "plugin:prettier/recommended",
+        "prettier",
+        "prettier/@typescript-eslint",
+        "prettier/babel",
+        "prettier/react",
+        "prettier/standard",
+        "prettier/unicorn"
+      ],
+
+      // Glob pattern for files to apply 'overrides' configuration, relative to the directory of the config file.
+      "files": ["**//.*.ts", "**//.*.tsx", "**/*.ts", "**/*.tsx"],
+
+      // Set each global variable name equal to true to allow the variable to be overwritten or false to disallow overwriting.
+      // "globals": {},
+
+      // The parser ESLint should use.
+      "parser": "@typescript-eslint/parser",
+
+      // The JavaScript language options to be supported.
+      "parserOptions": {
+        // `@typescript-eslint` specific setting
+        // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser#parseroptionscreatedefaultprogram
+        // This option allows you to request that when the project setting is specified,
+        // files will be allowed when not included in the projects defined by the provided tsconfig.json files.
+        // Using this option will incur significant performance costs.
+        // This option is primarily included for backwards-compatibility.
+        // See the project section above for more information.
+        // "createDefaultProgram": false,
+
+        // By default, ESLint supports only ECMAScript 5 syntax.
+        // You can override that setting to enable support for ECMAScript 6 as well as JSX by using configuration settings.
+        // "ecmaFeatures": {
+        //   // Enable support for `arrowFunctions`.
+        //   // "arrowFunctions": false,
+
+        //   // Enable support for `binaryLiterals`.
+        //   // "binaryLiterals": false,
+
+        //   // Enable support for `blockBindings`.
+        //   // "blockBindings": false,
+
+        //   // Enable support for `classes`.
+        //   // "classes": false,
+
+        //   // Enable support for `defaultParams`.
+        //   // "defaultParams": false,
+
+        //   // Enable support for `destructuring`.
+        //   // "destructuring": false,
+
+        //   // Enable support for `experimentalObjectRestSpread`.
+        //   // "experimentalObjectRestSpread": false,
+
+        //   // Enable support for `forOf`.
+        //   // "forOf": false,
+
+        //   // Enable support for `generators`.
+        //   // "generators": false,
+
+        //   // Enable support for `globalReturn`.
+        //   // "globalReturn": false,
+
+        //   // Enable support for `impliedStrict`.
+        //   // "impliedStrict": false,
+
+        //   // Enable support for `jsx`.
+        //   // "jsx": false,
+
+        //   // Enable support for `modules`.
+        //   // "modules": false,
+
+        //   // Enable support for `objectLiteralComputedProperties`.
+        //   // "objectLiteralComputedProperties": false,
+
+        //   // Enable support for `objectLiteralDuplicateProperties`.
+        //   // "objectLiteralDuplicateProperties": false,
+
+        //   // Enable support for `objectLiteralShorthandMethods`.
+        //   // "objectLiteralShorthandMethods": false,
+
+        //   // Enable support for `objectLiteralShorthandProperties`.
+        //   // "objectLiteralShorthandProperties": false,
+
+        //   // Enable support for `octalLiterals`.
+        //   // "octalLiterals": false,
+
+        //   // Enable support for `regexUFlag`.
+        //   // "regexUFlag": false,
+
+        //   // Enable support for `regexYFlag`.
+        //   // "regexYFlag": false,
+
+        //   // Enable support for `restParams`.
+        //   // "restParams": false,
+
+        //   // Enable support for `spread`.
+        //   // "spread": false,
+
+        //   // Enable support for `superInFunctions`.
+        //   // "superInFunctions": false,
+
+        //   // Enable support for `templateStrings`.
+        //   // "templateStrings": false,
+
+        //   // Enable support for `unicodeCodePointEscapes`.
+        //   // "unicodeCodePointEscapes": false
+        // },
+
+        // Set to 3, 5, 6, 7, 8, 9, 10, 11 (default) or 12 to specify the version of ECMAScript syntax you want to use.
+        // You can also set to 2015 (same as 6), 2016 (same as 7), 2017 (same as 8), 2018 (same as 9), 2019 (same as 10), 2020 (same as 11) or 2021 (same as 12) to use the year-based naming.
+        // "ecmaVersion": 2018,
+
+        // `@typescript-eslint` specific setting
+        // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser#parseroptionsextrafileextensions
+        // This option allows you to provide one or more additional file extensions which should be considered in the TypeScript Program compilation.
+        // The default extensions are .ts, .tsx, .js, and .jsx.
+        // Add extensions starting with ., followed by the file extension.
+        // E.g. for a .vue file use "extraFileExtensions: [".vue"].
+        // "extraFileExtensions": [],
+
+        // `@typescript-eslint` specific setting
+        // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser#parseroptionsjsxfragmentname
+        // The identifier that's used for JSX fragment elements (after transpilation).
+        // If null, assumes transpilation will always use a member of the configured jsxPragma.
+        // This should not be a member expression - just the root identifier (i.e. use "h" instead of "h.Fragment").
+        // If you provide parserOptions.project, you do not need to set this, as it will automatically detected from the compiler.
+        // "jsxFragmentName": null,
+
+        // `@typescript-eslint` specific setting
+        // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser#parseroptionsjsxpragma
+        // The identifier that's used for JSX Elements creation (after transpilation).
+        // If you're using a library other than React (like preact), then you should change this value.
+        // This should not be a member expression - just the root identifier (i.e. use "React" instead of "React.createElement").
+        // If you provide parserOptions.project, you do not need to set this, as it will automatically detected from the compiler.
+        // "jsxPragma": "React",
+
+        // `@typescript-eslint` specific setting
+        // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser#parseroptionslib
+        // For valid options, see the TypeScript compiler options.
+        // Specifies the TypeScript libs that are available.
+        // This is used by the scope analyser to ensure there are global variables declared for the types exposed by TypeScript.
+        // If you provide parserOptions.project, you do not need to set this, as it will automatically detected from the compiler.
+        // "lib": ["ES2018"],
+
+        // `@typescript-eslint` specific setting
+        // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser#parseroptionsproject
+        // This option allows you to provide a path to your project's tsconfig.json.
+        // This setting is required if you want to use rules which require type information.
+        // Relative paths are interpreted relative to the current working directory if tsconfigRootDir is not set.
+        // If you intend on running ESLint from directories other than the project root, you should consider using tsconfigRootDir.
+        "project": ["./tsconfig.json"],
+
+        // `@typescript-eslint` specific setting
+        // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser#parseroptionsprojectfolderignorelist
+        // This option allows you to ignore folders from being included in your provided list of projects.
+        // This is useful if you have configured glob patterns, but want to make sure you ignore certain folders.
+        // It accepts an array of globs to exclude from the project globs.
+        // For example, by default it will ensure that a glob like ./**/tsconfig.json will not match any tsconfigs within your node_modules folder
+        // (some npm packages do not exclude their source files from their published packages).
+        // "projectFolderIgnoreList": ["**/node_modules/**"],
+
+        // `@typescript-eslint` specific setting
+        // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser#parseroptionstsconfigrootdir
+        // This option allows you to provide the root directory for relative tsconfig paths specified in the project option above.
+        "tsconfigRootDir": "."
+
+        // Set to "script" (default) or "module" if your code is in ECMAScript modules.
+        // "sourceType": "module",
+
+        // `@typescript-eslint` specific setting
+        // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser#parseroptionswarnonunsupportedtypescriptversion
+        // This option allows you to toggle the warning that the parser will give you if you use a version of TypeScript which is not explicitly supported.
+        // "warnOnUnsupportedTypeScriptVersion": true
+      },
+
+      // ESLint supports the use of third-party plugins.
+      // Before using the plugin, you have to install it using npm.
+      "plugins": [
+        "@babel",
+        "@typescript-eslint/tslint",
+        "es",
+        "eslint-comments",
+        "import",
+        "jest",
+        "jest-extended",
+        "jsx-a11y",
+        "node",
+        "prettier",
+        "promise",
+        "react",
+        "react-hooks",
+        "sonarjs",
+        "standard",
+        "testing-library",
+        "unicorn"
+      ],
+
+      // To specify a processor, specify the plugin name and processor name joined by a forward slash.
+      // "processor": "",
+
+      // ESLint comes with a large number of rules.
+      // You can modify which rules your project uses either using configuration comments or configuration files.
+      "rules": {
+        // ESLint rule enforcing comment capitalization.
+        "capitalized-comments": [
+          "error",
+          "always",
+          {
+            "ignoreConsecutiveComments": false,
+            "ignoreInlineComments": false,
+            "ignorePattern": "tslint"
+          }
+        ],
+
+        // ESLint rule enforcing allowed length of identifiers.
+        "id-length": "off",
+
+        // ESLint rule enforcing maximum allowed lines per file.
+        "max-lines": "off",
+
+        // ESLint rule enforcing maximum allowed lines per function.
+        "max-lines-per-function": "off",
+
+        // ESLint rule enforcing maximum allowed statements per function.
+        "max-statements": "off",
+
+        // ESLint rule enforcing disuse of 'magic' numbers.
+        "no-magic-numbers": "off",
+
+        // ESLint rule enforcing disuse of ternary operators.
+        "no-ternary": "off",
+
+        // ESLint rule enforcing disuse of 'undefined'.
+        "no-undefined": "off",
+
+        // ESLint rule enforcing import sorting.
+        "sort-imports": "off",
+
+        // ESLint rule enforcing consistent definition of array types using either T[] or Array<T>.
+        "@typescript-eslint/array-type": [
+          "error",
+          {
+            // Sets the array type expected for mutable cases.
+            "default": "generic",
+
+            // Sets the array type expected for readonly arrays.
+            // If this is omitted, then the value for default will be used.
+            "readonly": "generic"
+          }
+        ],
+
+        // ESLint rule enforcing consistent definition of types using either interface or type.
+        "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+
+        // ESLint rule enforcing disusage of 'require' statements except in import statements.
+        "@typescript-eslint/no-var-requires": "off",
+
+        // Runs TSLint as an ESLint rule and reports issues as individual ESLint issues.
+        "@typescript-eslint/tslint/config": [
+          "warn",
+          {
+            // Path to tslint.json of your project.
+            "lintFile": "./tslint.json"
+
+            // tslint rules (will be used if `lintFile` is not specified).
+            // "rules": {},
+
+            // Array of paths to directories with rules, e.g. 'node_modules/tslint/lib/rules' (will be used if `lintFile` is not specified).
+            // "rulesDirectory": []
+          }
+        ],
+
+        // ESLint rule enforcing imported modules can be resolved to a module on the local filesystem,
+        // as defined by standard Node 'require.resolve' behavior.
+        "import/no-unresolved": "off",
+
+        // ESLint rule enforcing snapshots are not too large.
+        "jest/no-large-snapshots": "off",
+
+        // ESLint rule enforcing imported modules exist.
+        "node/no-missing-import": [
+          "error",
+          {
+            // Additional modules to allow.
+            // "allowModules": [],
+
+            // Additional paths to try when resolving imports.
+            "resolvePaths": ["."],
+
+            // File extensions to try when resolving imports.
+            "tryExtensions": [
+              ".cjs",
+              ".d.ts",
+              ".js",
+              ".json",
+              ".json5",
+              ".jsx",
+              ".mjs",
+              ".node",
+              ".ts",
+              ".tsx"
+            ]
+          }
+        ],
+
+        // ESLint rule enforcing disusage of unsupported ECMAScript syntax.
+        "node/no-unsupported-features/es-syntax": [
+          "error",
+          {
+            // The ECMAScript syntax features to ignore.
+            "ignores": [
+              // ECMAScript 2015
+              "arrowFunctions",
+              "binaryNumericLiterals",
+              "blockScopedFunctions",
+              "blockScopedVariables",
+              "classes",
+              "computedProperties",
+              "defaultParameters",
+              "destructuring",
+              "forOfLoops",
+              "generators",
+              "modules",
+              "new.target",
+              "objectSuperProperties",
+              "octalNumericLiterals",
+              "propertyShorthands",
+              "regexpU",
+              "regexpY",
+              "restParameters",
+              "spreadElements",
+              "templateLiterals",
+              "unicodeCodePointEscapes",
+
+              // ECMAScript 2016
+              "exponentialOperators",
+
+              // ECMAScript 2017
+              "asyncFunctions",
+              "trailingCommasInFunctions",
+
+              // ECMAScript 2018
+              "asyncIteration",
+              "malformedTemplateLiterals",
+              "regexpLookbehind",
+              "regexpNamedCaptureGroups",
+              "regexpS",
+              "regexpUnicodeProperties",
+              "restSpreadProperties",
+
+              // ECMAScript 2019
+              "jsonSuperset",
+              "optionalCatchBinding",
+
+              // ECMAScript 2020
+              "bigint",
+              "dynamicImport"
+            ],
+
+            // The version range of Node that is supported.
+            "version": ">=8.0.0"
+          }
+        ],
+
+        // Runs Prettier as an ESLint rule and reports differences as individual ESLint issues.
+        "prettier/prettier": "error",
+
+        // ESLint rule enforcing consistent usage of destructuring assignment of props, state, and context.
+        "react/destructuring-assignment": [
+          "error",
+          "never",
+          {
+            // Ignore in class field declarations.
+            "ignoreClassFields": false
+          }
+        ],
+
+        // ESLint rule enforcing a specific function type for function components.
+        "react/function-component-definition": [
+          "error",
+          {
+            // Function type for named function components.
+            "namedComponents": "arrow-function",
+
+            // Function type for unnamed function components.
+            "unnamedComponents": "arrow-function"
+          }
+        ],
+
+        // ESLint rule enforcing allowed extensions that may contain JSX.
+        "react/jsx-filename-extension": [
+          "error",
+          {
+            "allow": "always",
+            "extensions": [".js", ".jsx", ".tsx"]
+          }
+        ],
+
+        // ESLint rule enforcing the allowed max depth in JSX.
+        "react/jsx-max-depth": "off",
+
+        // ESLint rule enforcing the disusage of string literals in JSX.
+        "react/jsx-no-literals": "off",
+
+        // Prevent React to be incorrectly marked as unused.
+        "react/jsx-uses-react": "off",
+
+        // Prevent missing React when using JSX.
+        "react/react-in-jsx-scope": "off",
+
+        // ESLint rule enforcing immediately returning a value rather than declaring a variable and returning it.
+        "sonarjs/prefer-immediate-return": "off",
+
+        // ESLint rule enforcing the casing for filenames.
+        "unicorn/filename-case": [
+          "error",
+          {
+            // The case to use ('camelCase', 'kebabCase', 'pascalCase', 'snakeCase').
+            // "case": "kebabCase",
+
+            // The cases to allow or disallow.
+            "cases": {
+              // Allow or disallow camelCase.
+              "camelCase": true,
+
+              // Allow or disallow kebabCase.
+              "kebabCase": true,
+
+              // Allow or disallow pascalCase.
+              "pascalCase": true,
+
+              // Allow or disallow snakeCase.
+              "snakeCase": true
+            }
+
+            // Filenames to ignore.
+            // "ignore": []
+          }
+        ],
+
+        // ESLint rule enforcing function references are not passed directly to iterator methods.
+        "unicorn/no-fn-reference-in-iterator": "off",
+
+        // ESLint rule enforcing 'null' is not used.
+        "unicorn/no-null": "off",
+
+        // ESLint rule enforcing 'undefined' is not used when unnecessary.
+        "unicorn/no-useless-undefined": "off",
+
+        // ESLint rule enforcing the disuse of abbreviations.
+        "unicorn/prevent-abbreviations": "off"
+      }
+
+      // ESLint supports adding shared settings into configuration file.
+      // You can add settings object to ESLint configuration file and it will be supplied to every rule that will be executed.
+      // This may be useful if you are adding custom rules and want them to have access to the same information and be easily configurable.
+      // "settings": {}
+    }
+  ],
+
+  // The parser ESLint should use.
+  // "parser": "",
+
+  // The JavaScript language options to be supported.
+  // "parserOptions": {},
+
+  // ESLint supports the use of third-party plugins.
+  // Before using the plugin, you have to install it using npm.
+  // "plugins": [],
+
+  // By default, ESLint will look for configuration files in all parent folders up to the root directory.
+  // This can be useful if you want all of your projects to follow a certain convention,
+  // but can sometimes lead to unexpected results.
+  // To limit ESLint to a specific project, set this to `true` in a configuration in the root of your project.
+  "root": true
+
+  // ESLint comes with a large number of rules.
+  // You can modify which rules your project uses either using configuration comments or configuration files.
+  // "rules": {},
+
+  // ESLint supports adding shared settings into configuration file.
+  // You can add settings object to ESLint configuration file
+  // and it will be supplied to every rule that will be executed.
+  // This may be useful if you are adding custom rules
+  // and want them to have access to the same information and be easily configurable.
+  // "settings": {}
+}

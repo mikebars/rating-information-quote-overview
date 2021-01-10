@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { default as styled, StyledComponent } from 'styled-components/macro'
+import styled, { StyledComponent } from 'styled-components/macro'
 
 export type Coverage = 'asteroidCollision' | 'deductible'
 
@@ -23,7 +23,7 @@ export type Quote = {
       default?: number
       description: string
       title: string
-      values: Array<number>
+      values: Array<number> & { 0: number; 1: number }
     }
   >
   variableSelections: Record<Coverage, number>
@@ -41,9 +41,10 @@ type Props = {
 export const QuoteOverviewForm: React.FC<Props> = (
   props: Props,
 ): React.ReactElement => {
+  /* eslint-disable-next-line react/destructuring-assignment */
   const { onChange }: Props = props
 
-  /** deductible */
+  /** `deductible` */
   const defaultDeductible: FormData['deductible'] = getDefaultDeductible(
     props.quote,
   )
@@ -53,7 +54,7 @@ export const QuoteOverviewForm: React.FC<Props> = (
     React.Dispatch<React.SetStateAction<FormData['deductible']>>,
   ] = React.useState<FormData['deductible']>(defaultDeductible)
 
-  /** asteroidCollision */
+  /** `asteroidCollision` */
   const defaultAsteroidCollision: FormData['asteroidCollision'] = getDefaultAsteroidCollision(
     props.quote,
   )
@@ -63,7 +64,7 @@ export const QuoteOverviewForm: React.FC<Props> = (
     React.Dispatch<React.SetStateAction<FormData['asteroidCollision']>>,
   ] = React.useState<FormData['asteroidCollision']>(defaultAsteroidCollision)
 
-  /** onChange */
+  /** `onChange` */
   React.useEffect((): void => {
     onChange({ asteroidCollision, deductible })
   }, [asteroidCollision, deductible, onChange])
@@ -93,6 +94,7 @@ export const QuoteOverviewForm: React.FC<Props> = (
         >
           {labelText.deductible}
         </Label>
+
         <Select
           data-testid="quote-overview-form-deductible-select"
           id="quote-overview-form-deductible-select"
@@ -106,6 +108,7 @@ export const QuoteOverviewForm: React.FC<Props> = (
               <Option
                 data-testid={`quote-overview-form-deductible-option-${value}`}
                 id={`quote-overview-form-deductible-option-${value}`}
+                /* eslint-disable-next-line react/no-array-index-key */
                 key={`${value}-${index}`}
                 value={value}
               >
@@ -139,6 +142,7 @@ export const QuoteOverviewForm: React.FC<Props> = (
         >
           {labelText.asteroidCollision}
         </Label>
+
         <Select
           data-testid="quote-overview-form-asteroidCollision-select"
           id="quote-overview-form-asteroidCollision-select"
@@ -152,6 +156,7 @@ export const QuoteOverviewForm: React.FC<Props> = (
               <Option
                 data-testid={`quote-overview-form-asteroidCollision-option-${value}`}
                 id={`quote-overview-form-asteroidCollision-option-${value}`}
+                /* eslint-disable-next-line react/no-array-index-key */
                 key={`${value}-${index}`}
                 value={value}
               >
@@ -186,13 +191,13 @@ export const defaultQuote: Quote = {
       description:
         'The maximum amount covered for damages caused by asteroid collisions.',
       title: 'Asteroid Collision Limit',
-      values: [100000, 300000, 500000, 1000000], // tslint:disable-line:no-magic-numbers
+      values: [100000, 300000, 500000, 1000000],
     },
     deductible: {
       description:
         'The amount of money you will pay in an insurance claim before the insurance coverage kicks in.',
       title: 'Deductible',
-      values: [500, 1000, 2000], // tslint:disable-line:no-magic-numbers
+      values: [500, 1000, 2000],
     },
   },
   variableSelections: {
@@ -266,9 +271,9 @@ const Field: StyledComponent<'div', Record<string, unknown>> = styled.div`
 `
 
 const Form: StyledComponent<'form', Record<string, unknown>> = styled.form`
-  align-items: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
 `
 

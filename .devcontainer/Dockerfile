@@ -1,40 +1,72 @@
+###########################################################################
+# `rating-information-quote-overview`                                     #
+# `Container`                                                             #
+# `Dockerfile`                                                            #
+###########################################################################
+
 # [image]
 
-ARG NODE_VERSION=14.8.0
+ARG DEVCONTAINER_IMAGE_REPOSITORY
 
-ARG VARIANT=stretch
+ARG DEVCONTAINER_IMAGE_TAG_VARIANT
 
-FROM node:${NODE_VERSION}-${VARIANT}
+ARG DEVCONTAINER_IMAGE_TAG_VERSION
 
-# Upgrade yarn
+FROM ${DEVCONTAINER_IMAGE_REPOSITORY}:${DEVCONTAINER_IMAGE_TAG_VERSION}-${DEVCONTAINER_IMAGE_TAG_VARIANT} AS image
 
-ARG YARN_VERSION=1.22.4
+# [root]
 
-RUN curl -fSLO --compressed "https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz" \
-    && tar -xzf yarn-v$YARN_VERSION.tar.gz -C /opt/ \
-    && ln -snf /opt/yarn-v$YARN_VERSION/bin/yarn /usr/local/bin/yarn \
-    && ln -snf /opt/yarn-v$YARN_VERSION/bin/yarnpkg /usr/local/bin/yarnpkg \
-    && rm yarn-v$YARN_VERSION.tar.gz
+FROM image AS root
 
-# Install zsh
+ARG DEVCONTAINER_PACKAGE_APT_PACKAGE_LIST
 
-RUN apt-get update \
+ARG DEVCONTAINER_PACKAGE_OH_MY_ZSH_PLUGINS
+
+ARG DEVCONTAINER_PACKAGE_OH_MY_ZSH_THEME
+
+ARG DEVCONTAINER_USER_GID
+
+ARG DEVCONTAINER_USER_GROUP
+
+ARG DEVCONTAINER_USER_NAME
+
+ARG DEVCONTAINER_USER_UID
+
+RUN \
+    # Set the UID and GID for the `node` user
+    groupmod --gid ${DEVCONTAINER_USER_GID} ${DEVCONTAINER_USER_NAME} \
+    && usermod --gid ${DEVCONTAINER_USER_GID} --uid ${DEVCONTAINER_USER_UID} ${DEVCONTAINER_USER_NAME} \
+    && chown --recursive ${DEVCONTAINER_USER_UID}:${DEVCONTAINER_USER_GID} /home/${DEVCONTAINER_USER_NAME} \
+    # Install packages
+    && apt-get update \
     && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get --assume-yes install --no-install-recommends \
-    # <your-package-list-here>
-    zsh
+    && apt-get --assume-yes install --no-install-recommends ${DEVCONTAINER_PACKAGE_APT_PACKAGE_LIST} \
+    # Upgrade npm
+    && npm install --force --global --unsafe-perm npm@latest
 
-# Install oh-my-zsh
+# [user]
 
-ARG OH_MY_ZSH_PLUGINS=(git)
+FROM root AS user
 
-ARG OH_MY_ZSH_THEME="robbyrussell"
+ARG DEVCONTAINER_PACKAGE_APT_PACKAGE_LIST
 
-ARG USER=node
+ARG DEVCONTAINER_PACKAGE_OH_MY_ZSH_PLUGINS
 
-USER ${USER}
+ARG DEVCONTAINER_PACKAGE_OH_MY_ZSH_THEME
 
-RUN git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh \
+ARG DEVCONTAINER_USER_GID
+
+ARG DEVCONTAINER_USER_GROUP
+
+ARG DEVCONTAINER_USER_NAME
+
+ARG DEVCONTAINER_USER_UID
+
+USER ${DEVCONTAINER_USER_NAME}
+
+RUN \
+    # Install oh-my-zsh
+    git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh \
     && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
-    && sed --in-place "s/plugins=(git)/plugins=${OH_MY_ZSH_PLUGINS}/g" ~/.zshrc \
-    && sed --in-place "s/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"${OH_MY_ZSH_THEME}\"/g" ~/.zshrc
+    && sed --in-place "s/plugins=(git)/plugins=${DEVCONTAINER_PACKAGE_OH_MY_ZSH_PLUGINS}/g" ~/.zshrc \
+    && sed --in-place "s/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"${DEVCONTAINER_PACKAGE_OH_MY_ZSH_THEME}\"/g" ~/.zshrc

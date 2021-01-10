@@ -1,0 +1,42 @@
+diff --git a/node_modules/@commitlint/load/lib/utils/load-config.js b/node_modules/@commitlint/load/lib/utils/load-config.js
+index a2b4031..64721a2 100644
+--- a/node_modules/@commitlint/load/lib/utils/load-config.js
++++ b/node_modules/@commitlint/load/lib/utils/load-config.js
+@@ -7,7 +7,21 @@ exports.loadConfig = void 0;
+ const path_1 = __importDefault(require("path"));
+ const cosmiconfig_1 = require("cosmiconfig");
+ async function loadConfig(cwd, configPath) {
+-    const explorer = cosmiconfig_1.cosmiconfig('commitlint');
++    const explorer = cosmiconfig_1.cosmiconfig('commitlint', {
++      loaders: {
++        '.json': function cosmiconfigLoadJsonWithComments(filepath, content) {
++          const parseJson = require('parse-json');
++          const stripJsonComments = require('strip-json-comments');
++          try {
++            const result = parseJson(stripJsonComments(content));
++            return result;
++          } catch (error) {
++            error.message = `JSON Error in ${filepath}:\n${error.message}`;
++            throw error;
++          }
++        },
++      },
++    });
+     const explicitPath = configPath ? path_1.default.resolve(cwd, configPath) : undefined;
+     const explore = explicitPath ? explorer.load : explorer.search;
+     const searchPath = explicitPath ? explicitPath : cwd;
+diff --git a/node_modules/@commitlint/load/package.json b/node_modules/@commitlint/load/package.json
+index a6ceb76..f491992 100644
+--- a/node_modules/@commitlint/load/package.json
++++ b/node_modules/@commitlint/load/package.json
+@@ -46,7 +46,9 @@
+     "chalk": "4.1.0",
+     "cosmiconfig": "^7.0.0",
+     "lodash": "^4.17.19",
+-    "resolve-from": "^5.0.0"
++    "parse-json": "*",
++    "resolve-from": "^5.0.0",
++    "strip-json-comments": "*"
+   },
+   "gitHead": "922317463f7c90c0fb319e075de533dd63343863"
+ }

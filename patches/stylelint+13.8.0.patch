@@ -1,0 +1,59 @@
+diff --git a/node_modules/stylelint/lib/createStylelint.js b/node_modules/stylelint/lib/createStylelint.js
+index 532ac28..edd9641 100644
+--- a/node_modules/stylelint/lib/createStylelint.js
++++ b/node_modules/stylelint/lib/createStylelint.js
+@@ -26,9 +26,24 @@ module.exports = function (options = {}) {
+ 	/** @type {Partial<StylelintInternalApi>} */
+ 	const stylelint = { _options: options };
+ 
++  function cosmiconfigLoadJsonWithComments(filepath, content) {
++    const parseJson = require('parse-json');
++    const stripJsonComments = require('strip-json-comments');
++    try {
++      const result = parseJson(stripJsonComments(content));
++      return result;
++    } catch (error) {
++      error.message = `JSON Error in ${filepath}:\n${error.message}`;
++      throw error;
++    }
++  }
++
+ 	// Two separate explorers so they can each have their own transform
+ 	// function whose results are cached by cosmiconfig
+ 	stylelint._fullExplorer = cosmiconfig('stylelint', {
++    loaders: {
++      '.json': cosmiconfigLoadJsonWithComments,
++    },
+ 		// @ts-ignore TODO TYPES found out which cosmiconfig types are valid
+ 		transform: _.partial(
+ 			augmentConfig.augmentConfigFull,
+@@ -38,6 +53,9 @@ module.exports = function (options = {}) {
+ 	});
+ 	// @ts-ignore TODO TYPES found out which cosmiconfig types are valid
+ 	stylelint._extendExplorer = cosmiconfig(null, {
++    loaders: {
++      '.json': cosmiconfigLoadJsonWithComments,
++    },
+ 		transform: _.partial(
+ 			augmentConfig.augmentConfigExtended,
+ 			/** @type{StylelintInternalApi} */ (stylelint),
+diff --git a/node_modules/stylelint/package.json b/node_modules/stylelint/package.json
+index 0f57216..17a1e77 100644
+--- a/node_modules/stylelint/package.json
++++ b/node_modules/stylelint/package.json
+@@ -136,6 +136,7 @@
+     "meow": "^8.0.0",
+     "micromatch": "^4.0.2",
+     "normalize-selector": "^0.2.0",
++    "parse-json": "*",
+     "postcss": "^7.0.35",
+     "postcss-html": "^0.36.0",
+     "postcss-less": "^3.1.4",
+@@ -152,6 +153,7 @@
+     "specificity": "^0.4.1",
+     "string-width": "^4.2.0",
+     "strip-ansi": "^6.0.0",
++    "strip-json-comments": "*",
+     "style-search": "^0.1.0",
+     "sugarss": "^2.0.0",
+     "svg-tags": "^1.0.0",

@@ -1,0 +1,55 @@
+{
+  /***************************************************************************/
+  /* `rating-information-quote-overview`                                     */
+  /* `Workspace`                                                             */
+  /* `lerna.json`                                                            */
+  /***************************************************************************/
+
+  // JSON schema for Lerna configuration files.
+  "$schema": "http://json.schemastore.org/lerna",
+
+  // Options for the CLI commands.
+  "command": {
+    // Options for the bootstrap command.
+    // "bootstrap": {},
+
+    // Options for the init command.
+    "init": {
+      // Use lerna 1.x behavior of "exact" comparison.
+      // It will enforce the exact match for all subsequent executions.
+      "exact": true
+    }
+
+    // Options for the publish command.
+    // "publish": {},
+
+    // Options for the run command.
+    // "run": {},
+
+    // Options for the version command.
+    // "version": {}
+  },
+
+  // Array of globs of files to ignore when detecting changed packages.
+  // "ignoreChanges": [],
+
+  // Specify which client to run commands with.
+  // Change to "yarn" to run commands with yarn.
+  // Defaults to "npm".
+  "npmClient": "yarn",
+
+  // Array of strings that will be passed as arguments to the npmClient.
+  // "npmClientArgs": [],
+
+  // Array of globs to use a package locations.
+  "packages": ["packages/*"],
+
+  // Enable workspaces integration when using Yarn.
+  "useWorkspaces": true,
+
+  // The current version of the repository (or independent).
+  "version": "independent",
+
+  // Array of globs to use a workspace locations.
+  "workspaces": ["packages/*"]
+}

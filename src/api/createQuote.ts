@@ -1,5 +1,5 @@
-import { Quote } from 'src/screens/QuoteOverview/QuoteOverviewForm'
-import { FormData } from 'src/screens/RatingInformation/RatingInformationForm'
+import type { Quote } from 'src/screens/QuoteOverview/QuoteOverviewForm'
+import type { FormData } from 'src/screens/RatingInformation/RatingInformationForm'
 
 export type CreateQuoteRequest = {
   address: {
@@ -73,13 +73,13 @@ export const mockCreateQuoteResponse: CreateQuoteResponse = {
         description:
           'The maximum amount covered for damages caused by asteroid collisions.',
         title: 'Asteroid Collision Limit',
-        values: [100000, 300000, 500000, 1000000], // tslint:disable-line:no-magic-numbers
+        values: [100000, 300000, 500000, 1000000],
       },
       deductible: {
         description:
           'The amount of money you will pay in an insurance claim before the insurance coverage kicks in.',
         title: 'Deductible',
-        values: [500, 1000, 2000], // tslint:disable-line:no-magic-numbers
+        values: [500, 1000, 2000],
       },
     },
     variable_selections: {
@@ -91,7 +91,7 @@ export const mockCreateQuoteResponse: CreateQuoteResponse = {
 
 export type Dependencies = {
   fetchClient: typeof fetch
-  getUrl(): string
+  getUrl: () => string
 }
 
 export type CreateQuote = (
@@ -113,19 +113,26 @@ export const generateCreateQuote: GenerateCreateQuote = (
     },
   )
 
-  return response.json()
+  const json: CreateQuoteResponse = (await response.json()) as CreateQuoteResponse
+
+  return json
 }
 
 export const mockCreateQuote: CreateQuote = generateCreateQuote({
   fetchClient: async (): Promise<Response> => {
     const responseLike: Pick<Response, 'json'> = {
-      json: (): Promise<CreateQuoteResponse> =>
-        Promise.resolve(mockCreateQuoteResponse),
+      json: async (): Promise<CreateQuoteResponse> => {
+        const json: CreateQuoteResponse = await Promise.resolve(
+          mockCreateQuoteResponse,
+        )
+
+        return json
+      },
     }
 
-    const response: Response = responseLike as Response
+    const response: Response = await Promise.resolve(responseLike as Response)
 
-    return Promise.resolve(response)
+    return response
   },
   getUrl: (): string => '',
 })
@@ -140,7 +147,7 @@ export const formDataToCreateQuoteRequest: FormDataToCreateQuoteRequest = (
   address: {
     city: formData.address.city,
     line_1: formData.address.line1,
-    line_2: formData.address.line2 === '' ? null : formData.address.line2, // tslint:disable-line:no-null-keyword
+    line_2: formData.address.line2 === '' ? null : formData.address.line2,
     postal: formData.address.postal,
     region: formData.address.region,
   },
@@ -172,9 +179,14 @@ export const createQuoteResponseToQuote: CreateQuoteResponseToQuote = (
     region: createQuoteResponse.quote.rating_address.region,
   },
   variableOptions: {
-    asteroidCollision:
-      createQuoteResponse.quote.variable_options.asteroid_collision,
-    deductible: createQuoteResponse.quote.variable_options.deductible,
+    asteroidCollision: createQuoteResponse.quote.variable_options
+      .asteroid_collision as Quote['variableOptions']['asteroidCollision'] & {
+      values: Array<number> & { 0: number; 1: number }
+    },
+    deductible: createQuoteResponse.quote.variable_options
+      .deductible as Quote['variableOptions']['deductible'] & {
+      values: Array<number> & { 0: number; 1: number }
+    },
   },
   variableSelections: {
     asteroidCollision:

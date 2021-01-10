@@ -1,6 +1,6 @@
 import * as ReactTestingLibrary from '@testing-library/react'
 import * as fc from 'fast-check'
-import * as React from 'react'
+import type * as React from 'react'
 
 import { mockCreateQuote, mockCreateQuoteResponse } from 'src/api/createQuote'
 import { mockUpdateQuote } from 'src/api/updateQuote'
@@ -13,9 +13,9 @@ import {
 
 // #region /** JEST_EXHAUSTIVE setup */
 
+/* eslint-disable-next-line prefer-destructuring */
 const JEST_EXHAUSTIVE: string | undefined = process.env.JEST_EXHAUSTIVE
 
-/* tslint:disable-next-line:no-magic-numbers */
 const JEST_EXHAUSTIVE_TEST_TIMEOUT: number = 60 * 60 * 1000
 
 fc.configureGlobal({
@@ -30,36 +30,34 @@ fc.configureGlobal({
 
 type FormDataArbitrary = () => fc.Arbitrary<FormData>
 
-/* tslint:disable:no-magic-numbers */
 const formDataArbitrary: FormDataArbitrary = (): fc.Arbitrary<FormData> =>
   fc.record({
     address: fc.record({
       city: fc
-        .string(1, 10)
+        .string({ maxLength: 10, minLength: 1 })
         .filter((s: string): s is string => s.trim() !== ''),
       line1: fc
-        .string(1, 10)
+        .string({ maxLength: 10, minLength: 1 })
         .filter((s: string): s is string => s.trim() !== ''),
       line2: fc
-        .string(1, 10)
+        .string({ maxLength: 10, minLength: 1 })
         .filter((s: string): s is string => s.trim() !== ''),
       postal: fc
-        .string(1, 10)
+        .string({ maxLength: 10, minLength: 1 })
         .filter((s: string): s is string => s.trim() !== ''),
       region: fc
-        .string(1, 10)
+        .string({ maxLength: 10, minLength: 1 })
         .filter((s: string): s is string => s.trim() !== ''),
     }),
     name: fc.record({
       firstName: fc
-        .string(1, 10)
+        .string({ maxLength: 10, minLength: 1 })
         .filter((s: string): s is string => s.trim() !== ''),
       lastName: fc
-        .string(1, 10)
+        .string({ maxLength: 10, minLength: 1 })
         .filter((s: string): s is string => s.trim() !== ''),
     }),
   })
-/* tslint:enable:no-magic-numbers */
 
 // #endregion /** fast-check arbitraries */
 
@@ -92,7 +90,7 @@ describe('app', (): void => {
             const firstNameUpdated: boolean =
               firstNameInputElement.value === formData.name.firstName
 
-            expect(firstNameUpdated).toBe(true)
+            expect(firstNameUpdated).toBeTrue()
 
             // #endregion /** name - firstName */
 
@@ -109,7 +107,7 @@ describe('app', (): void => {
             const lastNameUpdated: boolean =
               lastNameInputElement.value === formData.name.lastName
 
-            expect(lastNameUpdated).toBe(true)
+            expect(lastNameUpdated).toBeTrue()
 
             // #endregion /** name - lastName */
 
@@ -130,7 +128,7 @@ describe('app', (): void => {
             const line1Updated: boolean =
               line1InputElement.value === formData.address.line1
 
-            expect(line1Updated).toBe(true)
+            expect(line1Updated).toBeTrue()
 
             // #endregion /** address - line1 */
 
@@ -147,7 +145,7 @@ describe('app', (): void => {
             const line2Updated: boolean =
               line2InputElement.value === formData.address.line2
 
-            expect(line2Updated).toBe(true)
+            expect(line2Updated).toBeTrue()
 
             // #endregion /** address - line2 */
 
@@ -164,7 +162,7 @@ describe('app', (): void => {
             const cityUpdated: boolean =
               cityInputElement.value === formData.address.city
 
-            expect(cityUpdated).toBe(true)
+            expect(cityUpdated).toBeTrue()
 
             // #endregion /** address - city */
 
@@ -181,7 +179,7 @@ describe('app', (): void => {
             const regionUpdated: boolean =
               regionInputElement.value === formData.address.region
 
-            expect(regionUpdated).toBe(true)
+            expect(regionUpdated).toBeTrue()
 
             // #endregion /** address - region */
 
@@ -198,7 +196,7 @@ describe('app', (): void => {
             const postalUpdated: boolean =
               postalInputElement.value === formData.address.postal
 
-            expect(postalUpdated).toBe(true)
+            expect(postalUpdated).toBeTrue()
 
             // #endregion /** address - postal */
 
@@ -231,7 +229,7 @@ describe('app', (): void => {
                   .values[0],
               )
 
-            expect(deductibleSelectSetToDefault).toBe(true)
+            expect(deductibleSelectSetToDefault).toBeTrue()
 
             ReactTestingLibrary.fireEvent.change(deductibleSelectElement, {
               target: {
@@ -261,7 +259,7 @@ describe('app', (): void => {
                   .values[1],
               )
 
-            expect(deductibleSelectUpdated).toBe(true)
+            expect(deductibleSelectUpdated).toBeTrue()
 
             // #endregion /** deductible */
 
@@ -279,7 +277,7 @@ describe('app', (): void => {
               regionUpdated,
             ].every((updated: boolean): boolean => updated)
 
-            expect(allUpdated).toBe(true)
+            expect(allUpdated).toBeTrue()
 
             // #endregion /** all checks passed */
 
@@ -356,10 +354,6 @@ describe('app', (): void => {
       }
 
       .c2 {
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -367,6 +361,10 @@ describe('app', (): void => {
         -webkit-flex-direction: column;
         -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
         -webkit-box-pack: center;
         -webkit-justify-content: center;
         -ms-flex-pack: center;
@@ -389,13 +387,13 @@ describe('app', (): void => {
       }
 
       .c0 {
-        height: 100%;
         width: 100%;
+        height: 100%;
       }
 
       .c1 {
-        font-size: 2rem;
         padding: 2rem;
+        font-size: 2rem;
         text-align: center;
       }
 

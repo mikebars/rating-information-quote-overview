@@ -1,0 +1,41 @@
+diff --git a/node_modules/lint-staged/lib/index.js b/node_modules/lint-staged/lib/index.js
+index f1dd0dd..8da9208 100644
+--- a/node_modules/lint-staged/lib/index.js
++++ b/node_modules/lint-staged/lib/index.js
+@@ -24,6 +24,19 @@ function resolveConfig(configPath) {
+ 
+ function loadConfig(configPath) {
+   const explorer = cosmiconfig('lint-staged', {
++    loaders: {
++      '.json': function cosmiconfigLoadJsonWithComments(filepath, content) {
++        const parseJson = require('parse-json');
++        const stripJsonComments = require('strip-json-comments');
++        try {
++          const result = parseJson(stripJsonComments(content));
++          return result;
++        } catch (error) {
++          error.message = `JSON Error in ${filepath}:\n${error.message}`;
++          throw error;
++        }
++      },
++    },
+     searchPlaces: [
+       'package.json',
+       '.lintstagedrc',
+diff --git a/node_modules/lint-staged/package.json b/node_modules/lint-staged/package.json
+index 2dd7d1d..ed492ad 100644
+--- a/node_modules/lint-staged/package.json
++++ b/node_modules/lint-staged/package.json
+@@ -44,9 +44,11 @@
+     "log-symbols": "^4.0.0",
+     "micromatch": "^4.0.2",
+     "normalize-path": "^3.0.0",
++    "parse-json": "*",
+     "please-upgrade-node": "^3.2.0",
+     "string-argv": "0.3.1",
+-    "stringify-object": "^3.3.0"
++    "stringify-object": "^3.3.0",
++    "strip-json-comments": "*"
+   },
+   "devDependencies": {
+     "@babel/core": "^7.12.3",

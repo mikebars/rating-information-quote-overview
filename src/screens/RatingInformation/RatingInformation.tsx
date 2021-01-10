@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { default as styled, StyledComponent } from 'styled-components/macro'
+import type * as React from 'react'
+import styled, { StyledComponent } from 'styled-components/macro'
 
 import {
   OnSubmit,
@@ -25,15 +25,15 @@ export const RatingInformation: React.FC<Props> = (
 /** Styled Components */
 
 const Container: StyledComponent<'div', Record<string, unknown>> = styled.div`
-  height: 100%;
   width: 100%;
+  height: 100%;
 `
 
 const Header: StyledComponent<
   'header',
   Record<string, unknown>
 > = styled.header`
-  font-size: 2rem;
   padding: 2rem;
+  font-size: 2rem;
   text-align: center;
 `

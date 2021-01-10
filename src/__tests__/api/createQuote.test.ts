@@ -8,14 +8,14 @@ import {
   mockCreateQuote,
   mockCreateQuoteResponse,
 } from 'src/api/createQuote'
-import { Quote } from 'src/screens/QuoteOverview/QuoteOverviewForm'
-import { FormData } from 'src/screens/RatingInformation/RatingInformationForm'
+import type { Quote } from 'src/screens/QuoteOverview/QuoteOverviewForm'
+import type { FormData } from 'src/screens/RatingInformation/RatingInformationForm'
 
 // #region /** JEST_EXHAUSTIVE setup */
 
+/* eslint-disable-next-line prefer-destructuring */
 const JEST_EXHAUSTIVE: string | undefined = process.env.JEST_EXHAUSTIVE
 
-/* tslint:disable-next-line:no-magic-numbers */
 const JEST_EXHAUSTIVE_TEST_TIMEOUT: number = 60 * 60 * 1000
 
 fc.configureGlobal({
@@ -30,9 +30,7 @@ fc.configureGlobal({
 
 type CreateQuoteResponseArbitrary = () => fc.Arbitrary<CreateQuoteResponse>
 
-const createQuoteResponseArbitrary: CreateQuoteResponseArbitrary = (): fc.Arbitrary<
-  CreateQuoteResponse
-> =>
+const createQuoteResponseArbitrary: CreateQuoteResponseArbitrary = (): fc.Arbitrary<CreateQuoteResponse> =>
   fc.record({
     quote: fc.record({
       policy_holder: fc.record({
@@ -44,7 +42,7 @@ const createQuoteResponseArbitrary: CreateQuoteResponseArbitrary = (): fc.Arbitr
       rating_address: fc.record({
         city: fc.string(),
         line_1: fc.string(),
-        line_2: fc.oneof(fc.string(), fc.constant(null)), // tslint:disable-line:no-null-keyword
+        line_2: fc.oneof(fc.string(), fc.constant(null)),
         postal: fc.string(),
         region: fc.string(),
       }),
@@ -88,6 +86,7 @@ const formDataArbitrary: FormDataArbitrary = (): fc.Arbitrary<FormData> =>
 
 // #endregion /** fast-check arbitraries */
 
+/* eslint-disable-next-line sonarjs/cognitive-complexity */
 describe('createQuote', (): void => {
   it(
     'createQuote - createQuoteResponseToQuote test',
@@ -106,17 +105,17 @@ describe('createQuote', (): void => {
               quote.policyHolder.lastName ===
                 createQuoteResponse.quote.policy_holder.last_name
 
-            expect(policyHolderMatches).toBe(true)
+            expect(policyHolderMatches).toBeTrue()
 
             const premiumMatches: boolean =
               quote.premium === createQuoteResponse.quote.premium
 
-            expect(premiumMatches).toBe(true)
+            expect(premiumMatches).toBeTrue()
 
             const quoteIdMatches: boolean =
               quote.quoteId === createQuoteResponse.quote.quoteId
 
-            expect(quoteIdMatches).toBe(true)
+            expect(quoteIdMatches).toBeTrue()
 
             const ratingAddressMatches: boolean =
               quote.ratingAddress.city ===
@@ -132,7 +131,7 @@ describe('createQuote', (): void => {
               quote.ratingAddress.region ===
                 createQuoteResponse.quote.rating_address.region
 
-            expect(ratingAddressMatches).toBe(true)
+            expect(ratingAddressMatches).toBeTrue()
 
             /* tslint:disable:strict-comparisons */
             const variableOptionsMatches: boolean =
@@ -159,7 +158,7 @@ describe('createQuote', (): void => {
                 createQuoteResponse.quote.variable_options.deductible.values
             /* tslint:enable:strict-comparisons */
 
-            expect(variableOptionsMatches).toBe(true)
+            expect(variableOptionsMatches).toBeTrue()
 
             const variableSelectionsMatches: boolean =
               quote.variableSelections.asteroidCollision ===
@@ -168,7 +167,7 @@ describe('createQuote', (): void => {
               quote.variableSelections.deductible ===
                 createQuoteResponse.quote.variable_selections.deductible
 
-            expect(variableSelectionsMatches).toBe(true)
+            expect(variableSelectionsMatches).toBeTrue()
 
             const allMatches: boolean = [
               policyHolderMatches,
@@ -179,7 +178,7 @@ describe('createQuote', (): void => {
               variableSelectionsMatches,
             ].every((matches: boolean): boolean => matches)
 
-            expect(allMatches).toBe(true)
+            expect(allMatches).toBeTrue()
 
             return allMatches
           },
@@ -204,12 +203,12 @@ describe('createQuote', (): void => {
           const firstNameMatches: boolean =
             createQuoteRequest.first_name === formData.name.firstName
 
-          expect(firstNameMatches).toBe(true)
+          expect(firstNameMatches).toBeTrue()
 
           const lastNameMatches: boolean =
             createQuoteRequest.last_name === formData.name.lastName
 
-          expect(lastNameMatches).toBe(true)
+          expect(lastNameMatches).toBeTrue()
 
           const addressMatches: boolean =
             createQuoteRequest.address.city === formData.address.city &&
@@ -220,7 +219,7 @@ describe('createQuote', (): void => {
             createQuoteRequest.address.postal === formData.address.postal &&
             createQuoteRequest.address.region === formData.address.region
 
-          expect(addressMatches).toBe(true)
+          expect(addressMatches).toBeTrue()
 
           const allMatches: boolean = [
             firstNameMatches,
@@ -228,7 +227,7 @@ describe('createQuote', (): void => {
             addressMatches,
           ].every((matches: boolean): boolean => matches)
 
-          expect(allMatches).toBe(true)
+          expect(allMatches).toBeTrue()
 
           return allMatches
         }),

@@ -13,9 +13,12 @@ import {
   updateQuoteResponseToQuote,
 } from 'src/api/updateQuote'
 import { QuoteOverview } from 'src/screens/QuoteOverview/QuoteOverview'
-import { OnChange, Quote } from 'src/screens/QuoteOverview/QuoteOverviewForm'
+import type {
+  OnChange,
+  Quote,
+} from 'src/screens/QuoteOverview/QuoteOverviewForm'
 import { RatingInformation } from 'src/screens/RatingInformation/RatingInformation'
-import { OnSubmit } from 'src/screens/RatingInformation/RatingInformationForm'
+import type { OnSubmit } from 'src/screens/RatingInformation/RatingInformationForm'
 
 type Props = {
   onChange: UpdateQuote
@@ -87,13 +90,9 @@ export const App: React.FC<Props> = (props: Props): React.ReactElement => {
     setQuote(newQuote)
   }
 
-  return (
-    <React.Fragment>
-      {quote === undefined ? (
-        <RatingInformation onSubmit={onSubmit} />
-      ) : (
-        <QuoteOverview onChange={onChange} quote={quote} />
-      )}
-    </React.Fragment>
+  return quote === undefined ? (
+    <RatingInformation onSubmit={onSubmit} />
+  ) : (
+    <QuoteOverview onChange={onChange} quote={quote} />
   )
 }
